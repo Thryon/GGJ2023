@@ -42,20 +42,21 @@ public class GlobalEvents : MonoBehaviour
         NoParamEvents[(int)_event] += _action;
     }
 
-    public void RegisterEventBool(GlobalEventEnum _event, EventBool _action)
+    public void RegisterEvent(GlobalEventEnum _event, EventBool _action)
     {
         BoolEvents[(int)_event] += _action;
     }
 
-    //public void RegisterEvent(GlobalEventEnum _event, Action _action)
-    //{
-    //    NoParamEvents[(int)_event] += _action;
-    //}
+    public void RegisterEvent(GlobalEventEnum _event, EventInt _action)
+    {
+        IntEvents[(int)_event] += _action;
+    }
 
-    //public void RegisterEvent(GlobalEventEnum _event, Action _action)
-    //{
-    //    NoParamEvents[(int)_event] += _action;
-    //}
+    public void RegisterEvent(GlobalEventEnum _event, EventString _action)
+    {
+        StringEvents[(int)_event] += _action;
+    }
+
 
     public void SendEvent(GlobalEventEnum _event)
     {
@@ -63,9 +64,41 @@ public class GlobalEvents : MonoBehaviour
             NoParamEvents[(int)_event]();
     }
 
+    public void SendEvent(GlobalEventEnum _event, bool _param)
+    {
+        if (BoolEvents[(int)_event] != null)
+            BoolEvents[(int)_event](_param);
+    }
+
+    public void SendEvent(GlobalEventEnum _event, int _param)
+    {
+        if (IntEvents[(int)_event] != null)
+            IntEvents[(int)_event](_param);
+    }
+
+    public void SendEvent(GlobalEventEnum _event, string _param)
+    {
+        if (StringEvents[(int)_event] != null)
+            StringEvents[(int)_event](_param);
+    }
+
     public void UnregisterEvent(GlobalEventEnum _event, Action _action)
     {
         NoParamEvents[(int)_event] -= _action;
     }
 
+    public void UnregisterEvent(GlobalEventEnum _event, EventBool _action)
+    {
+        BoolEvents[(int)_event] -= _action;
+    }
+
+    public void UnregisterEvent(GlobalEventEnum _event, EventInt _action)
+    {
+        IntEvents[(int)_event] -= _action;
+    }
+
+    public void UnregisterEvent(GlobalEventEnum _event, EventString _action)
+    {
+        StringEvents[(int)_event] -= _action;
+    }
 }
