@@ -1,0 +1,9 @@
+Ghoul boss animation ranges
+
+Idle: frame 1-81
+Block: frame 260-291
+Gethit: frame 300-330
+Die: frame 340-382
+Attack: frame 400-450
+Walk: frame 500-542
+Run: frame 615-640

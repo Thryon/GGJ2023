@@ -1,0 +1,9 @@
+Ghoul animation ranges
+
+Idle: frame 81-161
+Block1: frame 250-290
+Gethit: frame 300-320
+Die: frame 340-375
+Attack: frame 380-430
+Walk: frame 470-500
+Run: frame 540-560

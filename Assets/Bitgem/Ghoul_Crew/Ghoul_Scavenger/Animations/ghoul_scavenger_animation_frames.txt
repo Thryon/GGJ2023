@@ -1,0 +1,11 @@
+Ghoul scavenger animation ranges
+
+Idle: frame 81-161
+Block1: frame 250-280
+Gethit: frame 290-315
+Die: frame 730-760
+Attack: frame 690-728
+Walk: frame 400-440
+Run: frame 510-530
+Backpedal: frame 600-640
+

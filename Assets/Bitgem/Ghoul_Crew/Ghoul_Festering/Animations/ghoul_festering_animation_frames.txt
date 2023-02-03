@@ -1,0 +1,12 @@
+Ghoul festering animation ranges
+
+Idle: frame 81-161
+Block1: frame 250-265
+Block2: frame 270-289
+Block3: frame 290-305
+Gethit: frame 310-335
+Die: frame 740-782
+Attack: frame 500-570
+Walk: frame 420-450
+Run: frame 600-620
+Backpedal: frame 675-705

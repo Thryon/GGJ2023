@@ -1,0 +1,10 @@
+Ghoul grotesque animation ranges
+
+Idle: frame 101-201
+Block1: frame 310-325
+Block2: frame 330-345
+Gethit: frame 350-370
+Die: frame 650-692
+Attack: frame 600-640
+Walk: frame 450-480
+Run: frame 545-570
