@@ -4,29 +4,69 @@ using UnityEngine;
 
 public class WaterSource : MonoBehaviour
 {
-    public float waterAmount = 10f;
+    public float currentAmount = 10f;
     public float maxAmount = 100f;
-    public float maxLvl = 0f;
-    public float minLvl = -3f;
-    private Transform WaterTransform;
+    public float minLvl = -5f;
+    public bool fillAtStart = true;
+
+    public float lerpSpeed = 5f;
+
+    public bool use10;
+    public bool refill10;
+
+    private float maxLvl;
+    private Vector3 targetPosition;
+
+    private void Start()
+    {
+        maxLvl = transform.localPosition.y;
+        minLvl = transform.localPosition.y + minLvl;
+
+        if (fillAtStart)
+        {
+            currentAmount = maxAmount;
+            transform.localPosition = targetPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(minLvl, maxLvl, currentAmount / maxAmount), transform.localPosition.z);
+        }
+    }
+
+    private void Update()
+    {
+        if (use10)
+        {
+            UseWater(10);
+            use10 = false;
+        }
+        if (refill10)
+        {
+            RefillWater(10);
+            refill10 = false;
+        }
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * lerpSpeed);
+    }
+
+    public void RefreshWaterLevel()
+    {
+        targetPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(minLvl, maxLvl, currentAmount / maxAmount), transform.localPosition.z);
+    }
 
     public void UseWater(float amount)
     {
-        waterAmount -= amount;
-        WaterTransform.localPosition = new Vector3(WaterTransform.localPosition.x, Mathf.Lerp(maxLvl, minLvl, waterAmount / maxAmount), WaterTransform.localPosition.z);
-        if (waterAmount < 0)
+        currentAmount -= amount;
+        if (currentAmount < 0)
         {
-            waterAmount = 0;
+            currentAmount = 0;
         }
+        RefreshWaterLevel();
 
     }
     public void RefillWater(float amount)
     {
-        waterAmount += amount;
-        WaterTransform.localPosition = new Vector3(WaterTransform.localPosition.x, Mathf.Lerp(maxLvl, minLvl, waterAmount / maxAmount), WaterTransform.localPosition.z);
-        if (waterAmount > maxAmount)
+        currentAmount += amount;
+        if (currentAmount > maxAmount)
         {
-            waterAmount = maxAmount;
+            currentAmount = maxAmount;
         }
+        RefreshWaterLevel();
     }
 }

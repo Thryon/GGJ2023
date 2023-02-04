@@ -223,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467308348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 5, z: 0}
+  m_LocalPosition: {x: -6.5, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -242,8 +242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5454c0f184856c4aa319d2604551ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterAmount: 10
+  waterAmount: 100
   maxAmount: 100
+  maxLvl: 0
+  minLvl: -5
+  use10: 0
+  refill10: 1
 --- !u!1 &587969870
 GameObject:
   m_ObjectHideFlags: 0
