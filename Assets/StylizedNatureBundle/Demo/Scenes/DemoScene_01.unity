@@ -1083,6 +1083,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46fe0b683966bb498b91421b9a63660, type: 3}
+--- !u!1 &141300817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141300819}
+  - component: {fileID: 141300818}
+  m_Layer: 0
+  m_Name: WaterSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &141300818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141300817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62189efecf217d84ea67054c76aec7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &141300819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141300817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.506779, y: -0.48167777, z: 14.022944}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &143348485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1143,7 +1187,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-104522
+  m_Name: pb_Mesh-1984
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3947,6 +3991,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4484630060663046, guid: ae6620bc5c60dbd41956e4993b24566b, type: 3}
   m_PrefabInstance: {fileID: 195320297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &632368090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632368091}
+  - component: {fileID: 632368092}
+  - component: {fileID: 632368093}
+  m_Layer: 4
+  m_Name: RefillWithParticlesTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632368091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632368090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1346834362}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &632368092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632368090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.2, y: 0.31, z: 10.4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &632368093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632368090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17484f9fcb93b6940b919a4a4625aee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders:
+  - {fileID: 632368092}
+  KillParticles: 1
+  OnWaterReceived:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1346834363}
+        m_TargetAssemblyTypeName: WaterSource, Assembly-CSharp
+        m_MethodName: RefillWater
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &642551220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4427035735066640, guid: cdfbd09548b0c7f49a3f72c0474a6fa5, type: 3}
@@ -12687,9 +12815,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1849714664164909705, guid: 2c3f541b319875f439883e4df1ad3de0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 632368091}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3f541b319875f439883e4df1ad3de0, type: 3}
+--- !u!4 &1346834362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1849714664164909705, guid: 2c3f541b319875f439883e4df1ad3de0, type: 3}
+  m_PrefabInstance: {fileID: 1346834361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1346834363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1274547532330495976, guid: 2c3f541b319875f439883e4df1ad3de0, type: 3}
+  m_PrefabInstance: {fileID: 1346834361}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5454c0f184856c4aa319d2604551ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1351421818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13214,6 +13361,29 @@ LightingSettings:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4173570957380588, guid: 1dcac7c0f7a6fa6469b6cbb88cc4d700, type: 3}
   m_PrefabInstance: {fileID: 505752400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1466169838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6367701458916561520, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
+  m_PrefabInstance: {fileID: 6367701457942914114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1466169842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466169838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35a5ca39e4f80b41a8490e5a3034d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleSystem: {fileID: 1466169844}
+--- !u!198 &1466169844 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6367701458916561527, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
+  m_PrefabInstance: {fileID: 6367701457942914114}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1466726944 stripped
 Transform:
@@ -15578,7 +15748,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-104534
+  m_Name: pb_Mesh-1996
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -15970,7 +16140,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-104504
+  m_Name: pb_Mesh-1966
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -18669,13 +18839,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3257666445976866431, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
+      propertyPath: ParticleSystem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4012762429617746933, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1763220134}
     - target: {fileID: 4012762429617746933, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_VersionIndex
-      value: 2436
+      value: 2448
       objectReference: {fileID: 0}
     - target: {fileID: 4459984878090027764, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_Enabled
@@ -18687,7 +18861,7 @@ PrefabInstance:
       objectReference: {fileID: 1809074040}
     - target: {fileID: 5926952108753495730, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_VersionIndex
-      value: 384
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 6367701458076475180, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_Name
@@ -18737,13 +18911,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6367701458916561527, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
+      propertyPath: TriggerModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8584643567025720193, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 163124929}
     - target: {fileID: 8584643567025720193, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_VersionIndex
-      value: 2057
+      value: 2069
       objectReference: {fileID: 0}
     - target: {fileID: 8584643567025720196, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
       propertyPath: m_Mesh
@@ -18757,10 +18935,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1763220134}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3257666445976866431, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6367701458916561520, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1466169842}
   m_SourcePrefab: {fileID: 100100000, guid: e7e4f97d2e927464a9187e0a4187c81a, type: 3}
 --- !u!114 &6367701457942914115 stripped
 MonoBehaviour:

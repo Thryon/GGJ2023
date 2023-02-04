@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public enum GlobalEventEnum
@@ -24,10 +25,18 @@ public class GlobalEvents : MonoBehaviour
     public delegate void EventBool(bool _param);
     public delegate void EventInt(int _param);
     public delegate void EventString(string _param);
+    public delegate void EventComponent(Component _param);
+    public delegate void EventParticle(Component _param, ParticleSystem.Particle particle);
 
     EventBool[] BoolEvents = new EventBool[(int)GlobalEventEnum.Size];
     EventInt[] IntEvents = new EventInt[(int)GlobalEventEnum.Size];
     EventString[] StringEvents = new EventString[(int)GlobalEventEnum.Size];
+
+    public event EventParticle OnParticleCollisionEnter;
+    public void DispatchOnParticleCollisionEvent(Component collider, ParticleSystem.Particle particle)
+    {
+        OnParticleCollisionEnter?.Invoke(collider, particle);
+    }
 
     public static GlobalEvents Instance = null;
 

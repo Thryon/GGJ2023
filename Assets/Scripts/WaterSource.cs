@@ -63,12 +63,11 @@ public class WaterSource : MonoBehaviour
     public void UseWater(int amount)
     {
         currentAmount -= amount;
-        if (currentAmount < 0)
+        if (currentAmount <= 0)
         {
             currentAmount = 0;
         }
         RefreshWaterLevel();
-
     }
     public void RefillWater(int amount)
     {

@@ -10285,6 +10285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6367701458861183577}
   - component: {fileID: 6367701458861183582}
+  - component: {fileID: 3257666445976866431}
   m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
@@ -10325,6 +10326,19 @@ MonoBehaviour:
   particles: {fileID: 6367701458916561527}
   waterReservoir: {fileID: 403585906}
   emitInterval: 0.02
+--- !u!114 &3257666445976866431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458861183576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35a5ca39e4f80b41a8490e5a3034d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleSystem: {fileID: 6367701458916561527}
 --- !u!1 &6367701458916561520
 GameObject:
   m_ObjectHideFlags: 0
@@ -13960,8 +13974,8 @@ ParticleSystem:
     serializedVersion: 4
     type: 1
     collisionMode: 0
-    colliderForce: 0
-    multiplyColliderForceByParticleSize: 0
+    colliderForce: 1
+    multiplyColliderForceByParticleSize: 1
     multiplyColliderForceByParticleSpeed: 1
     multiplyColliderForceByCollisionAngle: 1
     m_Planes: []
@@ -14137,13 +14151,13 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 2
     outside: 0
     enter: 0
     exit: 0
-    colliderQueryMode: 0
+    colliderQueryMode: 2
     radiusScale: 1
     primitives: []
   SubModule:
