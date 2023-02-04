@@ -18055,13 +18055,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateMode: 0
-  MaxWobble: 0.01
-  WobbleSpeedMove: 0.5
-  fillAmount: 0.5
-  fillAmountRemap: {x: 0.75, y: 0.5}
+  reservoir: {fileID: 0}
+  MaxWobble: 0.005
+  WobbleSpeedMove: 0.02
+  fillAmount: 0.75
+  fillAmountRemap: {x: 0.7, y: 0.35}
   Recovery: 1
   Thickness: 1
-  CompensateShapeAmount: 1
+  CompensateShapeAmount: 0
   mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   rend: {fileID: 281000958840151384}
 --- !u!1 &7723917392886813507
