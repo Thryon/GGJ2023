@@ -73,8 +73,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Reflection: 0.631
-    - _Refraction: 0.205
+    - _Reflection: 0.77
+    - _Refraction: 0.246
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -86,7 +86,7 @@ Material:
     - _UVSec: 0
     - _UseUIAlphaClip: 0
     - _WaveSize: 1
-    - _WaveSpeed: 0.08
+    - _WaveSpeed: 0.07
     - _ZWrite: 1
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
