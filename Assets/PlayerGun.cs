@@ -7,6 +7,7 @@ public class PlayerGun : MonoBehaviour
 {
     [SerializeField] private Transform shootOrigin;
     [SerializeField] private ParticleSystem particles;
+    [SerializeField] private WaterReservoir waterReservoir;
     [SerializeField] private float emitInterval = 0.02f;
 
     private bool shooting = false;
@@ -22,15 +23,12 @@ public class PlayerGun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            shooting = true;
-            timer = 0f;
-            particles.Play();
+            StartShootingWater();
         }
         
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            shooting = false;
-            particles.Stop();
+            StopShootingWater();
         }
 
         if (shooting)
@@ -38,9 +36,30 @@ public class PlayerGun : MonoBehaviour
             timer += Time.deltaTime;
             while (timer >= emitInterval)
             {
-                particles.Emit(1);
+                if (waterReservoir.UseWater(1) > 0)
+                {
+                    StopShootingWater();
+                    break;
+                }
+                else
+                {
+                    particles.Emit(1);
+                }
                 timer -= emitInterval;
             }
         }
+    }
+
+    void StartShootingWater()
+    {
+        shooting = true;
+        timer = 0f;
+        particles.Play();
+    }
+
+    void StopShootingWater()
+    {
+        shooting = false;
+        particles.Stop();
     }
 }

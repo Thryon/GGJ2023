@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
@@ -9,6 +10,7 @@ namespace KinematicCharacterController
     {
         public CharacterController Character;
         public CharacterCamera CharacterCamera;
+        public WaterReservoir WaterReservoir;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -35,7 +37,17 @@ namespace KinematicCharacterController
                 Cursor.lockState = CursorLockMode.Locked;
             }
 
+            
+
             HandleCharacterInput();
+        }
+
+        private void FixedUpdate()
+        {
+            if (Input.GetMouseButton(1))
+            {
+                WaterReservoir.RefillWater(5);
+            }
         }
 
         private void LateUpdate()
