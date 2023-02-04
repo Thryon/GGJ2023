@@ -20,6 +20,7 @@ public class CollectOnTriggerEnter : MonoBehaviour
         switch (lootType)
         {
             case LootType.Seeds:
+                ReferencesSingleton.Instance.player.Inventory.AddSeeds(amount);
                 break;
             case LootType.Water:
                 break;

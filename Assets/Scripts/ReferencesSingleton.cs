@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using KinematicCharacterController;
 using UnityEngine;
 
 public class ReferencesSingleton : MonoBehaviour
@@ -8,6 +9,7 @@ public class ReferencesSingleton : MonoBehaviour
     public static ReferencesSingleton Instance = null;
 
     public GameObject treeRef;
+    public Player player;
     
     void Start()
     {

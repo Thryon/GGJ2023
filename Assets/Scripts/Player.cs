@@ -12,6 +12,7 @@ namespace KinematicCharacterController
         public CharacterController Character;
         public CharacterCamera CharacterCamera;
         public WaterReservoir WaterReservoir;
+        public Inventory Inventory;
 
         [SerializeField] private float waterRefillInterval = 0.01f;
 

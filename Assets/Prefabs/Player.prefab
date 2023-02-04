@@ -9815,6 +9815,7 @@ GameObject:
   - component: {fileID: 6367701458076475186}
   - component: {fileID: 6367701458076475187}
   - component: {fileID: 403585906}
+  - component: {fileID: 7027446391628218385}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9837,7 +9838,7 @@ Transform:
   - {fileID: 6367701458669425464}
   - {fileID: 6367701458715010185}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6367701458076475187
 MonoBehaviour:
@@ -9854,6 +9855,7 @@ MonoBehaviour:
   Character: {fileID: 6367701458715010189}
   CharacterCamera: {fileID: 6367701458669425465}
   WaterReservoir: {fileID: 403585906}
+  Inventory: {fileID: 0}
   waterRefillInterval: 0.005
 --- !u!114 &403585906
 MonoBehaviour:
@@ -9868,6 +9870,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmount: 600
+--- !u!114 &7027446391628218385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458076475180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f1e6b1e0ddaef43952a559dcee138e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seeds: 0
 --- !u!1 &6367701458101605078
 GameObject:
   m_ObjectHideFlags: 0
@@ -10285,7 +10300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6367701458861183577}
   - component: {fileID: 6367701458861183582}
-  - component: {fileID: 3257666445976866431}
   m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
@@ -10326,19 +10340,6 @@ MonoBehaviour:
   particles: {fileID: 6367701458916561527}
   waterReservoir: {fileID: 403585906}
   emitInterval: 0.02
---- !u!114 &3257666445976866431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6367701458861183576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d35a5ca39e4f80b41a8490e5a3034d6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ParticleSystem: {fileID: 6367701458916561527}
 --- !u!1 &6367701458916561520
 GameObject:
   m_ObjectHideFlags: 0
@@ -10350,6 +10351,7 @@ GameObject:
   - component: {fileID: 6367701458916561521}
   - component: {fileID: 6367701458916561527}
   - component: {fileID: 6367701458916561526}
+  - component: {fileID: 1466169842}
   m_Layer: 9
   m_Name: WaterParticles
   m_TagString: Untagged
@@ -10364,7 +10366,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6367701458916561520}
-  m_LocalRotation: {x: 0.7071066, y: -0, z: -0, w: 0.707107}
+  m_LocalRotation: {x: 0.70562875, y: -0.039017122, z: -0.051506706, w: 0.70562947}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10374,7 +10376,7 @@ Transform:
   - {fileID: 1376901277}
   m_Father: {fileID: 6367701458063855917}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 97.34, y: 90.508, z: 89.493}
 --- !u!198 &6367701458916561527
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15195,6 +15197,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1466169842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458916561520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35a5ca39e4f80b41a8490e5a3034d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleSystem: {fileID: 6367701458916561527}
 --- !u!1 &6367701459067663513
 GameObject:
   m_ObjectHideFlags: 0
@@ -20230,15 +20245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4115570168393814275, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_VersionIndex
-      value: 2433
+      value: 2454
       objectReference: {fileID: 0}
     - target: {fileID: 6696149931220649028, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_VersionIndex
-      value: 381
+      value: 402
       objectReference: {fileID: 0}
     - target: {fileID: 8759365756698880375, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_VersionIndex
-      value: 2054
+      value: 2075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
