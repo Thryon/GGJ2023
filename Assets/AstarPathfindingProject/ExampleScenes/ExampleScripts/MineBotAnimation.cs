@@ -43,6 +43,8 @@ namespace Pathfinding.Examples {
 		/// <summary>Point for the last spawn of <see cref="endOfPathEffect"/></summary>
 		protected Vector3 lastTarget;
 
+		private static readonly int NormalizedSpeed = Animator.StringToHash("NormalizedSpeed");
+
 		/// <summary>
 		/// Called when the end of path has been reached.
 		/// An effect (<see cref="endOfPathEffect)"/> is spawned when this function is called
@@ -67,7 +69,7 @@ namespace Pathfinding.Examples {
 			relVelocity.y = 0;
 
 			// Speed relative to the character size
-			anim.SetFloat("NormalizedSpeed", relVelocity.magnitude / anim.transform.lossyScale.x);
+			anim.SetFloat(NormalizedSpeed, relVelocity.magnitude / anim.transform.lossyScale.x);
 		}
 	}
 }

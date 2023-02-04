@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int MaxHealth = 1;
     public float delayDestroyOnDeath = 0.25f;
+    public UnityEvent OnDeathEvent;
     int currentHealth;
 
     LootComponent lootComp;
@@ -54,6 +56,7 @@ public class Health : MonoBehaviour
 
     void OnDeath()
     {
+        OnDeathEvent?.Invoke();
         // TODO: play death anim
     }
 }

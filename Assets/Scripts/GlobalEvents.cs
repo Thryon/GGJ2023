@@ -16,6 +16,7 @@ public enum GlobalEventEnum
     OnDeath,
     OnWaterSourceEmpty,
     OnWaterSourceRefilled,
+    OnGainSeed,
     Size
 }
 

@@ -8,7 +8,6 @@ using UnityEngine.Events;
 public class WaterReceiver : MonoBehaviour
 {
     public List<Collider> colliders;
-    public bool KillParticles = true;
     public UnityEvent OnWaterReceived;
     
     protected virtual void Start()
@@ -24,12 +23,13 @@ public class WaterReceiver : MonoBehaviour
         GlobalEvents.Instance.OnParticleCollisionEnter += OnParticleCollisionEnter;
     }
 
-    private void OnParticleCollisionEnter(Component col, ParticleSystem.Particle particle)
+    private void OnParticleCollisionEnter(Component colComponent, ParticleSystem.Particle particle)
     {
-        if (colliders.Contains(col))
+        if (colliders.Contains(colComponent))
         {
-            if (KillParticles)
-                particle.remainingLifetime = 0f;
+            Collider col = (Collider)colComponent;
+            Vector3 colliderPoint = col.ClosestPoint(particle.position);
+            Vector3 dir = (colliderPoint - particle.position).normalized;
             OnWaterReceived?.Invoke();
         }
     }
