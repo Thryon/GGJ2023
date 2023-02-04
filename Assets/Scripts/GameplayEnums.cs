@@ -6,3 +6,11 @@ public enum EnemyType
     Tank,
     Thief
 }
+
+public enum LootType
+{
+    Seeds,
+    Water,
+
+}
+
