@@ -22,7 +22,6 @@ public class WaterReservoir : MonoBehaviour
         {
             amount = value;
             amount = Mathf.Clamp(amount, 0, maxAmount);
-            Debug.Log("Water left: " + amount);
         }
     }
 
