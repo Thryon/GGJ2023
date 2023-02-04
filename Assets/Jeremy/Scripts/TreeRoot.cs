@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TreeRoot : MonoBehaviour
 {
@@ -20,10 +23,21 @@ public class TreeRoot : MonoBehaviour
     public float persistence = 1.0f;
     // Seed for the noise
     public int seed = 0;
+
+    [Space]
     // The line renderer to render the root
     public LineRenderer lineRenderer;
+    public float growTime = 1.5f;
+    public float shrinkTime = .35f;
+    public bool generate, grow, shrink;
 
-    public Vector3[] points;
+    private Vector3[] points;
+    private Keyframe[] widthKeys;
+
+    [Space]
+    public bool generateUpdate;
+    public float generateDelay = 1f;
+    private float _generateDelay;
 
     // Function to generate the Perlin noise
     float PerlinNoise2D(float x, float y)
@@ -62,11 +76,37 @@ public class TreeRoot : MonoBehaviour
     private void Start()
     {
         seed = Random.Range(0, 9999);
+        widthKeys = lineRenderer.widthCurve.keys;
     }
 
     private void Update()
     {
-        Generate();
+        if (generate)
+        {
+            generate = false;
+            Generate();
+        }
+        if (grow)
+        {
+            grow = false;
+            Grow();
+        }
+        if (shrink)
+        {
+            shrink = false;
+            Shrink();
+        }
+
+        if (generateUpdate)
+        {
+            if (_generateDelay <= 0)
+            {
+                Generate();
+                _generateDelay = generateDelay;
+            }
+            else
+                _generateDelay -= Time.deltaTime;
+        }
     }
 
     void Generate()
@@ -80,6 +120,9 @@ public class TreeRoot : MonoBehaviour
         switch (noiseMethod)
         {
             case NoiseMethod.perlin:
+                // Initialize the points array
+                points = new Vector3[segments];
+
                 // Calculate the step between each segment
                 Vector3 stepPerlin = (endPoint.position - transform.position) / segments;
 
@@ -126,5 +169,66 @@ public class TreeRoot : MonoBehaviour
         // Update Line Renderer
         lineRenderer.positionCount = segments;
         lineRenderer.SetPositions(points);
+
+    }
+
+
+    private Coroutine growRoutine;
+
+    public void Grow()
+    {
+        if (growRoutine != null)
+            StopCoroutine(growRoutine);
+        growRoutine = StartCoroutine(GrowRoot());
+    }
+    public void Shrink()
+    {
+        if (growRoutine != null)
+            StopCoroutine(growRoutine);
+        growRoutine = StartCoroutine(ShrinkRoot());
+    }
+    private IEnumerator GrowRoot()
+    {
+        float time = 0.05f;
+
+        AnimationCurve widthCurve = new AnimationCurve();
+        Keyframe[] keys = lineRenderer.widthCurve.keys;
+        keys[keys.Length - 1].value = 0;
+        
+        while (time < growTime)
+        {
+            for (int i = 0; i < widthKeys.Length; i++)
+            {
+                keys[i].time = widthKeys[i].time * (time / growTime);
+            }
+            widthCurve.keys = keys;
+            lineRenderer.widthCurve = widthCurve;
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+        widthCurve.keys = widthKeys;
+        lineRenderer.widthCurve = widthCurve;
+    }
+    private IEnumerator ShrinkRoot()
+    {
+        float time = 0.05f;
+
+        AnimationCurve widthCurve = new AnimationCurve();
+        Keyframe[] keys = lineRenderer.widthCurve.keys;
+        keys[keys.Length - 1].value = 0;
+        
+        while (time < shrinkTime)
+        {
+            for (int i = 0; i < widthKeys.Length; i++)
+            {
+                keys[i].time = widthKeys[i].time * (1 - time / shrinkTime);
+            }
+            widthCurve.keys = keys;
+            lineRenderer.widthCurve = widthCurve;
+
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 }
