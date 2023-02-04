@@ -88,7 +88,7 @@ public class MovableRootTarget : MonoBehaviour
 
         if (targetFollow)
         {
-            Vector3 destination = targetFollow.position + (transform.position - targetFollow.position).normalized * 3f + Random.insideUnitSphere * 1.5f;
+            Vector3 destination = targetFollow.position + (transform.position - targetFollow.position).normalized * 3f;// + Random.insideUnitSphere * 1.5f;
             transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * followSpeed);
             return;
         }

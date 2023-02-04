@@ -54,10 +54,7 @@ public class TreeRoot : MonoBehaviour
     public float maxDistance = 50f;
     // Activate this option to update the mesh in update
     public bool canGenerate = true;
-    // Delay betwean updates
-    public float generateDelay = 1f;
 
-    private float _generateDelay;
     private Vector3[] points;
     private Keyframe[] widthKeys;
     private Vector3 endTargetPosition;
@@ -114,7 +111,7 @@ public class TreeRoot : MonoBehaviour
         widthKeys = lineRenderer.widthCurve.keys;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (generate)
         {
@@ -133,13 +130,7 @@ public class TreeRoot : MonoBehaviour
         }
         if (canGenerate)
         {
-            if (_generateDelay <= 0)
-            {
-                Generate();
-                _generateDelay = generateDelay;
-            }
-            else
-                _generateDelay -= Time.deltaTime;
+            Generate();
         }
     }
 
