@@ -77,8 +77,9 @@ public class WaterSource : MonoBehaviour
         if (currentAmount > maxAmount)
         {
             currentAmount = maxAmount;
-            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnWaterSourceRefilled);
         }
+        GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnWaterSourceRefilled);
         RefreshWaterLevel();
+
     }
 }
