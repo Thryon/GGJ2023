@@ -277,11 +277,12 @@ GameObject:
   - component: {fileID: 3428531769366981350}
   - component: {fileID: 3428531769366981347}
   - component: {fileID: 3428531769366981353}
-  - component: {fileID: 3428531769366981357}
   - component: {fileID: 3428531769366981349}
   - component: {fileID: 3428531769366981293}
   - component: {fileID: -4541172343348505379}
   - component: {fileID: 7574200356432823854}
+  - component: {fileID: 7066308772778257357}
+  - component: {fileID: 3783802825324267605}
   m_Layer: 8
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -305,7 +306,7 @@ Transform:
   - {fileID: 1859409874336323479}
   - {fileID: 1883629355}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 8.515, z: 0}
 --- !u!114 &3428531769366981350
 MonoBehaviour:
@@ -348,10 +349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 2
-  height: 4
+  radius: 1
+  height: 2
   canMove: 1
-  maxSpeed: 24
+  maxSpeed: 5
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -372,7 +373,7 @@ MonoBehaviour:
   rotationSpeed: 450
   slowdownDistance: 7
   pickNextWaypointDist: 10
-  endReachedDistance: 2
+  endReachedDistance: 1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -392,32 +393,6 @@ MonoBehaviour:
   version: 1
   anim: {fileID: 9079408220024262881}
   endOfPathEffect: {fileID: 0}
---- !u!143 &3428531769366981357
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428531769366981254}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 0.8
-  m_Radius: 2
-  m_SlopeLimit: 45
-  m_StepOffset: 1.2
-  m_SkinWidth: 0.1
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.95, z: 0}
 --- !u!114 &3428531769366981349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,9 +451,11 @@ MonoBehaviour:
   - {fileID: 3428531769366981353}
   - {fileID: 3428531769366981349}
   - {fileID: 3428531769366981293}
-  - {fileID: 3428531769366981357}
+  - {fileID: 0}
   - {fileID: 9079408220024262881}
   - {fileID: 1883629356}
+  - {fileID: 7066308772778257357}
+  - {fileID: 3783802825324267605}
   ragdollColliders:
   - {fileID: 1561036723}
   - {fileID: 2115879540}
@@ -503,6 +480,56 @@ MonoBehaviour:
   - {fileID: 1921875489}
   - {fileID: 2115879539}
   - {fileID: 1561036719}
+--- !u!54 &7066308772778257357
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428531769366981254}
+  serializedVersion: 4
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!136 &3783802825324267605
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428531769366981254}
+  m_Material: {fileID: 13400000, guid: 7ebf950520ae62c4cb7b0f107aafc62a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.89
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!1001 &9174894760096826985
 PrefabInstance:
   m_ObjectHideFlags: 0

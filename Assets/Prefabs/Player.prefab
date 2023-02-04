@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1376901277}
   - component: {fileID: 1376901279}
   - component: {fileID: 1376901278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubEmitter2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 6367701457845975905}
   - component: {fileID: 6367701457845975911}
   - component: {fileID: 6367701457845975910}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubEmitter0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9781,7 +9781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6367701458063855917}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: ShootOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9816,7 +9816,7 @@ GameObject:
   - component: {fileID: 6367701458076475187}
   - component: {fileID: 403585906}
   - component: {fileID: 7027446391628218385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9993,7 +9993,8 @@ GameObject:
   - component: {fileID: 6367701458669425466}
   - component: {fileID: 6367701458669425465}
   - component: {fileID: 4459984878090027764}
-  m_Layer: 0
+  - component: {fileID: 1976487085784028202}
+  m_Layer: 6
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -10130,6 +10131,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ambientModificationFactor: 0.35
+--- !u!114 &1976487085784028202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458669425463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: d0bff955253b55f4fbd887f077ed343a, type: 2}
 --- !u!1 &6367701458715010187
 GameObject:
   m_ObjectHideFlags: 0
@@ -10300,7 +10314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6367701458861183577}
   - component: {fileID: 6367701458861183582}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10352,7 +10366,7 @@ GameObject:
   - component: {fileID: 6367701458916561527}
   - component: {fileID: 6367701458916561526}
   - component: {fileID: 1466169842}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: WaterParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13976,7 +13990,7 @@ ParticleSystem:
     serializedVersion: 4
     type: 1
     collisionMode: 0
-    colliderForce: 100
+    colliderForce: 500
     multiplyColliderForceByParticleSize: 1
     multiplyColliderForceByParticleSpeed: 1
     multiplyColliderForceByCollisionAngle: 1
@@ -14145,7 +14159,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 183
+      m_Bits: 1719
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -15304,7 +15318,7 @@ GameObject:
   - component: {fileID: 6367701459749937709}
   - component: {fileID: 6367701459749937715}
   - component: {fileID: 6367701459749937714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SubEmitter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20199,6 +20213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunV2
       objectReference: {fileID: 0}
+    - target: {fileID: 2832035495039409446, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3577618317050919531, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -20243,17 +20261,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3919942545769340187, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4115570168393814275, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_VersionIndex
-      value: 2454
+      value: 2475
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621759326861162103, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998902276712051383, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6696149931220649028, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_VersionIndex
-      value: 402
+      value: 423
+      objectReference: {fileID: 0}
+    - target: {fileID: 7723917392886813507, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8759365756698880375, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
       propertyPath: m_VersionIndex
-      value: 2075
+      value: 2096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8759365756698880380, guid: d60498dd7a836a94fbc4a7c063915350, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

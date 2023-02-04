@@ -50,6 +50,10 @@ public class Ragdoll : MonoBehaviour
             {
                 ((Behaviour)component).enabled = enable;
             }
+            else if (component is Rigidbody)
+            {
+                ((Rigidbody)component).isKinematic = enable;
+            }
             
         }
     }

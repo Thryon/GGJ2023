@@ -9,7 +9,7 @@ public class EnemyWaterReceiver : WaterReceiver
         if (colliders.Contains((Collider)colComponent))
         {
             var ragdoll = colComponent.GetComponentInParent<Ragdoll>();
-            ragdoll.Fling(position, direction, 2f);
+            ragdoll.Fling(position, direction, 5f);
             OnWaterReceived?.Invoke();
         }
     }

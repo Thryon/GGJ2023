@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a493058f1fb294bb144105aa399e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoints: []
+  SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   prefabs:
   - {fileID: 3428531769366981254, guid: bc7b03b9ed92b894a84c369f249d99b6, type: 3}
   - {fileID: 3428531769366981254, guid: bc7b03b9ed92b894a84c369f249d99b6, type: 3}
