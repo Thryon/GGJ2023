@@ -9883,6 +9883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seeds: 0
+  seedCounterText: {fileID: 0}
 --- !u!1 &6367701458101605078
 GameObject:
   m_ObjectHideFlags: 0

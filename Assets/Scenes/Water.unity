@@ -242,12 +242,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5454c0f184856c4aa319d2604551ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterAmount: 100
+  currentAmount: 10
   maxAmount: 100
-  maxLvl: 0
-  minLvl: -5
+  minLvl: -100
+  fillAtStart: 1
+  lerpSpeed: 0.1
   use10: 0
-  refill10: 1
+  refill10: 0
 --- !u!1 &587969870
 GameObject:
   m_ObjectHideFlags: 0
