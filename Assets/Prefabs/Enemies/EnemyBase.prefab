@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6731c5c6d7ae93e45889a14a357bef6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loots: []
-  forceOnSpawn: 100
+  loots:
+  - prefab: {fileID: 4305202668975094838, guid: 051c4c9072513c14c88f6870dd621648, type: 3}
+    quantity: 3
+  forceOnSpawn: 150
 --- !u!114 &1313225747634694435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +132,7 @@ GameObject:
   - component: {fileID: 3428531769366981357}
   - component: {fileID: 3428531769366981349}
   - component: {fileID: 3428531769366981293}
+  - component: {fileID: -4541172343348505379}
   m_Layer: 2
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -237,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  anim: {fileID: 0}
+  anim: {fileID: 9079408220024262881}
   endOfPathEffect: {fileID: 0}
 --- !u!143 &3428531769366981357
 CharacterController:
@@ -294,6 +297,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!114 &-4541172343348505379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428531769366981254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f1da68b1ded3a47beb2f716e424d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9174894760096826985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -355,6 +370,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabd970b59aa5914d9f2e58557843a23, type: 3}
+--- !u!95 &9079408220024262881 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95507461269935752, guid: cabd970b59aa5914d9f2e58557843a23, type: 3}
+  m_PrefabInstance: {fileID: 9174894760096826985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9170373900671754399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4627112755963638, guid: cabd970b59aa5914d9f2e58557843a23, type: 3}

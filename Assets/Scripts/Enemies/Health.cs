@@ -34,14 +34,14 @@ public class Health : MonoBehaviour
 
         pendingKill = true;
 
+        StartCoroutine(DelayDestroy());
     }
 
     IEnumerator DelayDestroy()
     {
-        
         OnDeath();
         yield return new WaitForSeconds(delayDestroyOnDeath);
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
     public void GainHealth(int _gain)

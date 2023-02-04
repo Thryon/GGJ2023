@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5601711568113529338
 MonoBehaviour:
@@ -45,11 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPoints: []
+  prefabs:
+  - {fileID: 3428531769366981254, guid: bc7b03b9ed92b894a84c369f249d99b6, type: 3}
+  - {fileID: 3428531769366981254, guid: bc7b03b9ed92b894a84c369f249d99b6, type: 3}
+  - {fileID: 0}
   waves:
   - {fileID: 11400000, guid: 7bc22e440a8ea5445ac3903770ac2aa1, type: 2}
   - {fileID: 11400000, guid: 0b67c758313be2f4ebb9cdfd013ffc4d, type: 2}
-  initialDelay: 10
-  globalDelayBetweenWaves: 10
+  initialDelay: 2
+  globalDelayBetweenWaves: 5
   useDelaysInWavesData: 1
   globalDelayBetweenSpawn: 1
   quantityToSpawnAfterGlobalDelay: 5

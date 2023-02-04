@@ -29,7 +29,7 @@ public class LootComponent : MonoBehaviour
                     rb = spawned.AddComponent<Rigidbody>();
 
                 Vector3 offsetRandom = Random.insideUnitSphere;
-                rb.AddForce((2*Vector3.up + new Vector3(offsetRandom.x, 0, offsetRandom.z)).normalized * forceOnSpawn);
+                rb.AddForce(((5*Vector3.up) + new Vector3(offsetRandom.x, 0, offsetRandom.z)).normalized * forceOnSpawn);
                 rb.useGravity = true;
             }
         }
