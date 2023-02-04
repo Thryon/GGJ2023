@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WaterSource : MonoBehaviour
 {
-    public float currentAmount = 10f;
-    public float maxAmount = 100f;
+    public int currentAmount = 10;
+    public int maxAmount = 100;
     public float minLvl = -5f;
     public bool fillAtStart = true;
 
@@ -47,10 +47,10 @@ public class WaterSource : MonoBehaviour
 
     public void RefreshWaterLevel()
     {
-        targetPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(minLvl, maxLvl, currentAmount / maxAmount), transform.localPosition.z);
+        targetPosition = new Vector3(transform.localPosition.x, Mathf.Lerp(minLvl, maxLvl, (float)currentAmount / maxAmount), transform.localPosition.z);
     }
 
-    public void UseWater(float amount)
+    public void UseWater(int amount)
     {
         currentAmount -= amount;
         if (currentAmount < 0)
@@ -60,7 +60,7 @@ public class WaterSource : MonoBehaviour
         RefreshWaterLevel();
 
     }
-    public void RefillWater(float amount)
+    public void RefillWater(int amount)
     {
         currentAmount += amount;
         if (currentAmount > maxAmount)

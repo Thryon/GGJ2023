@@ -4960,9 +4960,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6367701458076475186}
   - component: {fileID: 6367701458076475187}
+  - component: {fileID: 403585906}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4982,7 +4983,7 @@ Transform:
   - {fileID: 6367701458669425464}
   - {fileID: 6367701458715010185}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6367701458076475187
 MonoBehaviour:
@@ -4998,6 +4999,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 6367701458715010189}
   CharacterCamera: {fileID: 6367701458669425465}
+  WaterReservoir: {fileID: 403585906}
+  waterRefillInterval: 0.005
+--- !u!114 &403585906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458076475180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bceddf06152f14479be7865d356fecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmount: 800
 --- !u!1 &6367701458101605078
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,7 +5262,7 @@ GameObject:
   - component: {fileID: 6367701458715010188}
   m_Layer: 6
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5439,6 +5455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootOrigin: {fileID: 6367701458063855917}
   particles: {fileID: 6367701458916561527}
+  waterReservoir: {fileID: 403585906}
   emitInterval: 0.02
 --- !u!1 &6367701458868490060
 GameObject:
@@ -5812,7 +5829,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.6
+      scalar: 0.5
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -6190,7 +6207,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 10.2
+    angle: 7
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -6520,8 +6537,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.18116726
-          value: 1
+          time: 0.076652184
+          value: 0.97297287
           inSlope: 0.03291114
           outSlope: 0.03291114
           tangentMode: 0
@@ -6530,12 +6547,12 @@ ParticleSystem:
           outWeight: 1
         - serializedVersion: 3
           time: 1
-          value: 0.78378326
-          inSlope: -0.32822615
-          outSlope: -0.32822615
+          value: 0.20270187
+          inSlope: -1.0667298
+          outSlope: -1.0667298
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.15084329
+          inWeight: 0.12347922
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -9271,7 +9288,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.3
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9354,8 +9371,13 @@ ParticleSystem:
       emitProbability: 1
     - serializedVersion: 3
       emitter: {fileID: 6367701459749937715}
+      type: 1
+      properties: 0
+      emitProbability: 1
+    - serializedVersion: 3
+      emitter: {fileID: 6367701459749937715}
       type: 2
-      properties: 2
+      properties: 0
       emitProbability: 1
   LightsModule:
     enabled: 0
@@ -10846,8 +10868,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.06
-      minScalar: 0.01
+      scalar: 0.03
+      minScalar: 0.005
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -11591,7 +11613,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 1
+      probability: 0.95
   SizeModule:
     enabled: 1
     curve:

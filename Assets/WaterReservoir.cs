@@ -50,4 +50,14 @@ public class WaterReservoir : MonoBehaviour
         GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGainWater, Amount);
         return Mathf.Max(overflow, 0);
     }
+
+    public bool IsFull()
+    {
+        return amount == maxAmount;
+    }
+    
+    public bool IsEmpty()
+    {
+        return amount == 0;
+    }
 }

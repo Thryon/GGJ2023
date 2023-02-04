@@ -9,8 +9,11 @@ public enum GlobalEventEnum
     OnLoseWater,
     OnShoot,
     OnInteractWithStand,
+    OnEnterInteractWithWaterZone,
+    OnExitInteractWithWaterZone,
     OnInteractWithWaterPond,
     OnDeath,
+    OnWaterSourceEmpty,
     Size
 }
 

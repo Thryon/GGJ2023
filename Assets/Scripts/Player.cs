@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KinematicCharacterController;
+using UnityEngine.Serialization;
 
 namespace KinematicCharacterController
 {
@@ -12,11 +13,20 @@ namespace KinematicCharacterController
         public CharacterCamera CharacterCamera;
         public WaterReservoir WaterReservoir;
 
+        [SerializeField] private float waterRefillInterval = 0.01f;
+
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
+
+        private bool inWaterZone;
+        private WaterSource currentWaterSource;
+        
+        public bool InWaterZone => inWaterZone;
+
+        public WaterSource CurrentWaterSource => currentWaterSource;
 
         private void Start()
         {
@@ -30,6 +40,13 @@ namespace KinematicCharacterController
             CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
         }
 
+        private void OnDestroy()
+        {
+        }
+        
+
+        private float waterRefillTimer = 0f;
+        private bool isRefilling = false;
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -37,8 +54,49 @@ namespace KinematicCharacterController
                 Cursor.lockState = CursorLockMode.Locked;
             }
 
-            
+            if (inWaterZone)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    isRefilling = true;
+                    waterRefillTimer = 0f;
+                }
 
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    isRefilling = false;
+                }
+            }
+            else
+            {
+                isRefilling = false;
+            }
+        
+
+            if(isRefilling)
+            {
+                waterRefillTimer += Time.deltaTime;
+                while (waterRefillTimer >= waterRefillInterval)
+                {
+                    if (CurrentWaterSource.currentAmount > 0 && !WaterReservoir.IsFull())
+                    {
+                        CurrentWaterSource.UseWater(1);
+                        if (WaterReservoir.RefillWater(1) > 0)
+                        {
+                            isRefilling = false;
+                            break;
+                        }
+
+                        waterRefillTimer -= waterRefillInterval;
+                    }
+                    else
+                    {
+                        isRefilling = false;
+                        break;
+                    }
+                }
+            }
+            
             HandleCharacterInput();
         }
 
@@ -105,6 +163,20 @@ namespace KinematicCharacterController
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
+        }
+
+
+
+        public void EnterWaterSource(WaterSource waterSource)
+        {
+            currentWaterSource = waterSource;
+            inWaterZone = true;
+        }
+
+        public void LeaveWaterSource(WaterSource waterSource)
+        {
+            currentWaterSource = null;
+            inWaterZone = false;
         }
     }
 }
