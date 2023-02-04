@@ -25,6 +25,11 @@ public class RootSplineGenerator : MonoBehaviour
 
     private Coroutine growRoutine;
 
+    [Space]
+    public bool generateUpdate;
+    public float generateDelay = 1f;
+    private float _generateDelay;
+
     private void Start()
     {
         Generate();
@@ -34,9 +39,43 @@ public class RootSplineGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
             Generate();
+
+        if (generateUpdate)
+        {
+            if (_generateDelay <= 0)
+            {
+                Generate();
+                _generateDelay = generateDelay;
+            }
+            else
+                _generateDelay -= Time.deltaTime;
+        }
     }
     private void Generate()
-    {
+    {/*
+        int numberOfControlPoints = (int)numberOfControlPointsRange.GetRandomValue();
+        float scale = scaleRange.GetRandomValue();
+        float noise = noiseRange.GetRandomValue();
+
+        controlPoints = new Vector3[numberOfControlPoints];
+        controlPoints[0] = startPosition;
+        controlPoints[numberOfControlPoints - 1] = endPosition;
+        for (int i = 1; i < numberOfControlPoints - 1; i++)
+        {
+            float t = (float)i / (float)(numberOfControlPoints - 1);
+            float x = Mathf.Lerp(startPosition.x, endPosition.x, t);
+            float y = Mathf.Lerp(startPosition.y, endPosition.y, t);
+            float z = Mathf.Lerp(startPosition.z, endPosition.z, t);
+            float offsetX = Mathf.PerlinNoise(x * noise, y * noise + Time.time) * scale;
+            float offsetY = Mathf.PerlinNoise(y * noise + Time.time, z * noise) * scale;
+            float offsetZ = Mathf.PerlinNoise(z * noise, x * noise + Time.time) * scale;
+            controlPoints[i] = new Vector3(x + offsetX, y + offsetY, z + offsetZ);
+        }
+
+        lineRenderer.positionCount = numberOfControlPoints;
+        lineRenderer.SetPositions(controlPoints);
+        */
+        
         // Random end position within an upside down cone
         float radius = coneRadiusRange.GetRandomValue();
         float angle = angleVariationRange.GetRandomValue();
@@ -72,6 +111,8 @@ public class RootSplineGenerator : MonoBehaviour
         // Update Line Renderer
         lineRenderer.positionCount = numberOfControlPoints;
         lineRenderer.SetPositions(controlPoints);
+
+        
 
         if (growRoutine != null)
             StopCoroutine(growRoutine);
