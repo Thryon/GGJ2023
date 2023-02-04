@@ -9,7 +9,10 @@ public class WaterSource : MonoBehaviour
     public float minLvl = -5f;
     public bool fillAtStart = true;
 
-    public float lerpSpeed = 5f;
+    public float lerpSpeed = 2f;
+
+    public float refillInterval = 30f;
+    public float refillTime = 0f;
 
     public bool use10;
     public bool refill10;
@@ -31,6 +34,13 @@ public class WaterSource : MonoBehaviour
 
     private void Update()
     {
+        refillTime += Time.deltaTime;
+        if (refillTime >= refillInterval)
+        {
+            refillTime = 0f;
+            RefillWater(Random.Range(100, 500));
+            RefreshWaterLevel();
+        }
         if (use10)
         {
             UseWater(10);
