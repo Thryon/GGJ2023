@@ -23,19 +23,16 @@ public class WaterReceiver : MonoBehaviour
         GlobalEvents.Instance.OnParticleCollisionEnter += OnParticleCollisionEnter;
     }
 
-    private void OnParticleCollisionEnter(Component colComponent, ParticleSystem.Particle particle)
+    protected virtual void OnParticleCollisionEnter(Component colComponent, ParticleSystem.Particle particle, Vector3 position, Vector3 direction)
     {
         if (colliders.Contains(colComponent))
         {
-            Collider col = (Collider)colComponent;
-            Vector3 colliderPoint = col.ClosestPoint(particle.position);
-            Vector3 dir = (colliderPoint - particle.position).normalized;
             OnWaterReceived?.Invoke();
         }
     }
 
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         foreach (var col in colliders)
         {

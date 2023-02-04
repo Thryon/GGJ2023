@@ -28,16 +28,16 @@ public class GlobalEvents : MonoBehaviour
     public delegate void EventInt(int _param);
     public delegate void EventString(string _param);
     public delegate void EventComponent(Component _param);
-    public delegate void EventParticle(Component _param, ParticleSystem.Particle particle);
+    public delegate void EventParticle(Component _param, ParticleSystem.Particle particle, Vector3 position, Vector3 direction);
 
     EventBool[] BoolEvents = new EventBool[(int)GlobalEventEnum.Size];
     EventInt[] IntEvents = new EventInt[(int)GlobalEventEnum.Size];
     EventString[] StringEvents = new EventString[(int)GlobalEventEnum.Size];
 
     public event EventParticle OnParticleCollisionEnter;
-    public void DispatchOnParticleCollisionEvent(Component collider, ParticleSystem.Particle particle)
+    public void DispatchOnParticleCollisionEvent(Component collider, ParticleSystem.Particle particle, Vector3 position, Vector3 direction)
     {
-        OnParticleCollisionEnter?.Invoke(collider, particle);
+        OnParticleCollisionEnter?.Invoke(collider, particle, position, direction);
     }
 
     public static GlobalEvents Instance = null;

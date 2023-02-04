@@ -59,4 +59,15 @@ public class Ragdoll : MonoBehaviour
         ToggleComponentsToDisable(true);
         ToggleRagdollComponents(false);
     }
+
+    public void Fling(Vector3 position, Vector3 direction, float force)
+    {
+        foreach (var ragdollComponent in ragdollRigidBodies)
+        {
+            if(ragdollComponent.isKinematic)
+                continue;
+            // ragdollComponent.isKinematic = false;
+            ragdollComponent.AddForceAtPosition(direction * force, position, ForceMode.Impulse);
+        }
+    }
 }

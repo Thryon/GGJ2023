@@ -9855,7 +9855,7 @@ MonoBehaviour:
   Character: {fileID: 6367701458715010189}
   CharacterCamera: {fileID: 6367701458669425465}
   WaterReservoir: {fileID: 403585906}
-  Inventory: {fileID: 0}
+  Inventory: {fileID: 7027446391628218385}
   waterRefillInterval: 0.005
 --- !u!114 &403585906
 MonoBehaviour:
@@ -10513,7 +10513,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 12
+      scalar: 32
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -11009,7 +11009,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 7
+    angle: 4
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -13976,7 +13976,7 @@ ParticleSystem:
     serializedVersion: 4
     type: 1
     collisionMode: 0
-    colliderForce: 1
+    colliderForce: 100
     multiplyColliderForceByParticleSize: 1
     multiplyColliderForceByParticleSpeed: 1
     multiplyColliderForceByCollisionAngle: 1

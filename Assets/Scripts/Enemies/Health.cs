@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public int MaxHealth = 1;
     public float delayDestroyOnDeath = 0.25f;
     public UnityEvent OnDeathEvent;
+    public UnityEvent OnTakeDamageEvent;
     int currentHealth;
 
     LootComponent lootComp;
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int _damage)
     {
         currentHealth -= _damage;
+        OnTakeDamageEvent?.Invoke();
         if (currentHealth <= 0)
             Kill();
     }

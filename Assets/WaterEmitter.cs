@@ -28,8 +28,11 @@ public class WaterEmitter : MonoBehaviour
                 var particle = particles[i];
                 particle.remainingLifetime = 0f;
                 particles[i] = particle;
+                Collider col = (Collider)comp;
+                Vector3 colliderPoint = col.ClosestPoint(particle.position);
+                Vector3 dir = (colliderPoint - particle.position).normalized;
                 ParticleSystem.SetTriggerParticles(ParticleSystemTriggerEventType.Inside, particles);
-                GlobalEvents.Instance.DispatchOnParticleCollisionEvent(comp, particles[i]);
+                GlobalEvents.Instance.DispatchOnParticleCollisionEvent(comp, particles[i], particle.position, dir);
             }
         }
     }
