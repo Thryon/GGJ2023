@@ -45,9 +45,12 @@ public class Liquid : MonoBehaviour
     void Start()
     {
         GetMeshAndRend();
-        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGainWater, OnAmountChange);
-        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnLoseWater, OnAmountChange);
 
+        if (Application.isPlaying)
+        {
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGainWater, OnAmountChange);
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnLoseWater, OnAmountChange);
+        }
         OnAmountChange(0);
     }
 

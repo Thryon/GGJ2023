@@ -50,14 +50,17 @@ public class TreeRoot : MonoBehaviour
     public bool generate, grow, shrink;
 
     [Header("Generation")]
+    // Limit the target distance
+    public float maxDistance = 50f;
     // Activate this option to update the mesh in update
-    public bool generateUpdate;
+    public bool canGenerate = true;
     // Delay betwean updates
     public float generateDelay = 1f;
 
     private float _generateDelay;
     private Vector3[] points;
     private Keyframe[] widthKeys;
+    private Vector3 endTargetPosition;
 
     // Function to generate the Perlin noise
     float PerlinNoise2D(float x, float y)
@@ -93,8 +96,20 @@ public class TreeRoot : MonoBehaviour
         return total;
     }
 
+    public void ActivateOnTarget(Transform target, bool spawn = false)
+    {
+        endPoint = target;
+        if (spawn)
+            Grow();
+    }
+    public void RemoveTarget()
+    {
+        endPoint = null;
+    }
+
     private void Start()
     {
+        lineRenderer.useWorldSpace = true;
         seed = Random.Range(0, 9999);
         widthKeys = lineRenderer.widthCurve.keys;
     }
@@ -116,8 +131,7 @@ public class TreeRoot : MonoBehaviour
             shrink = false;
             Shrink();
         }
-
-        if (generateUpdate)
+        if (canGenerate)
         {
             if (_generateDelay <= 0)
             {
@@ -131,16 +145,27 @@ public class TreeRoot : MonoBehaviour
 
     void Generate()
     {
+        if (!endPoint) return;
+
         // Determines the amount of segments
         float distance = Vector3.Distance(transform.position, endPoint.position);
-        int segments = (int)(baseSegments * (1f + distance / (2 * baseSegments)));
         Vector3 direction = (endPoint.position - transform.position).normalized;
-        float heightDifference = Mathf.Max(endPoint.position.y - transform.position.y, 0f);
+
+        if (distance > maxDistance)
+        {
+            endTargetPosition = transform.position + direction * maxDistance;
+            distance = maxDistance;
+        }
+        else
+            endTargetPosition = endPoint.position;
+
+        int segments = (int)(baseSegments * (1f + distance / (2 * baseSegments)));
+        float heightDifference = Mathf.Max(endTargetPosition.y - transform.position.y, 0f);
 
         // Initialize the points array
         points = new Vector3[segments];
         // Calculate the step between each segment
-        Vector3 step = (endPoint.position - transform.position) / segments;
+        Vector3 step = (endTargetPosition - transform.position) / segments;
 
         switch (noiseMethod)
         {
@@ -193,7 +218,7 @@ public class TreeRoot : MonoBehaviour
                             y: offsetY.Evaluate(curveRatio, noise),
                             z: offsetZ.Evaluate(curveRatio, noise));
 
-                        points[i] = Vector3.Lerp(transform.position, endPoint.position, curveRatio) + point * distance / 3;
+                        points[i] = Vector3.Lerp(transform.position, endTargetPosition, curveRatio) + point * distance / 3;
                     }
                     break;
                 }
@@ -224,6 +249,9 @@ public class TreeRoot : MonoBehaviour
     }
     private IEnumerator GrowRoot()
     {
+        canGenerate = true;
+        lineRenderer.enabled = true;
+        Generate();
         float time = 0.05f;
 
         AnimationCurve widthCurve = new AnimationCurve();
@@ -247,6 +275,8 @@ public class TreeRoot : MonoBehaviour
     }
     private IEnumerator ShrinkRoot()
     {
+        RemoveTarget();
+        canGenerate = false;
         float time = 0.05f;
 
         AnimationCurve widthCurve = new AnimationCurve();
@@ -265,5 +295,7 @@ public class TreeRoot : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+
+        lineRenderer.enabled = false;
     }
 }

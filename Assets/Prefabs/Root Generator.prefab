@@ -366,6 +366,7 @@ MonoBehaviour:
   generate: 1
   grow: 0
   shrink: 0
+  maxDistance: 50
   generateUpdate: 1
   generateDelay: 0.01
 --- !u!120 &8149761145063414707
