@@ -5,6 +5,7 @@ using UnityEngine;
 public class WavesSystem : MonoBehaviour
 {
     public SpawnPoint[] SpawnPoints;
+    public static int cycleIndex = 1;
 
     [Header("Enemies")]
     [Tooltip("In the order of enemy type enum (Simple, Tank, Thief)")]
@@ -57,10 +58,11 @@ public class WavesSystem : MonoBehaviour
                 yield return new WaitForSeconds(globalDelayBetweenWaves); // should be high to let the players explore a bit
             }
 
-            stop = true;
+            cycleIndex++;
         }
     }
 
+    
     int currentSpawnPoint = 0;
     IEnumerator SpawnWave(WaveSO _waveToSpawn)
     {
@@ -74,7 +76,8 @@ public class WavesSystem : MonoBehaviour
                     if ((int)spawnData.enemyType >= prefabs.Count || prefabs[(int)spawnData.enemyType] == null)
                         continue;
 
-                    SpawnPoints[currentSpawnPoint].Spawn(spawnData.quantity, prefabs[(int)spawnData.enemyType]);
+                    float qtyMultiplier = 1 + (0.5f * (cycleIndex - 1));
+                    SpawnPoints[currentSpawnPoint].Spawn((int)(spawnData.quantity * qtyMultiplier), prefabs[(int)spawnData.enemyType]);
                     currentSpawnPoint = (currentSpawnPoint + 1) % SpawnPoints.Length;
 
                     yield return new WaitForSeconds(spawnData.delay);

@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        MaxHealth = WavesSystem.cycleIndex * MaxHealth;
         currentHealth = MaxHealth;
         lootComp = GetComponent<LootComponent>();
     }
