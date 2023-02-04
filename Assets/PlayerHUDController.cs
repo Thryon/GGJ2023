@@ -11,14 +11,19 @@ public class PlayerHUDController : MonoBehaviour
     [SerializeField] private WaterReservoirUI waterReservoirUI;
 
     [SerializeField] private TMP_Text pressToRefillText;
+    [SerializeField] private TMP_Text emptySourceText;
+
     void Start()
     {
         pressToRefillText.gameObject.SetActive(false);
+        emptySourceText.gameObject.SetActive(false);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnEnterInteractWithWaterZone, OnEnterWaterZone);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnExitInteractWithWaterZone, OnExitWaterZone);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGainWater, OnGainWater);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnLoseWater, OnLoseWater);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnWaterSourceEmpty, OnWaterSourceEmpty);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnWaterSourceRefilled, OnWaterSourceRefilled);
+
     }
 
     private void OnDestroy()
@@ -28,14 +33,24 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGainWater, OnGainWater);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnLoseWater, OnLoseWater);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnWaterSourceEmpty, OnWaterSourceEmpty);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnWaterSourceRefilled, OnWaterSourceRefilled);
+
     }
 
     private void OnWaterSourceEmpty()
     {
-        if(player.CurrentWaterSource != null && 
-           player.CurrentWaterSource.currentAmount <= 0 && 
-           pressToRefillText.gameObject.activeSelf)
+        if (player.CurrentWaterSource != null &&
+           player.CurrentWaterSource.currentAmount <= 0)
+        {
             pressToRefillText.gameObject.SetActive(false);
+            emptySourceText.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnWaterSourceRefilled()
+    {
+        pressToRefillText.gameObject.SetActive(true);
+        emptySourceText.gameObject.SetActive(false);
     }
 
     void OnEnterWaterZone()
@@ -43,7 +58,12 @@ public class PlayerHUDController : MonoBehaviour
         if(!player.WaterReservoir.IsFull() && 
            player.CurrentWaterSource != null && 
            player.CurrentWaterSource.currentAmount > 0)
-            pressToRefillText.gameObject.SetActive(true);
+           pressToRefillText.gameObject.SetActive(true);
+        if (!player.WaterReservoir.IsFull() &&
+            player.CurrentWaterSource != null &&
+            player.CurrentWaterSource.currentAmount <= 0)
+            emptySourceText.gameObject.SetActive(true);
+            
     }
     
     void OnGainWater()
@@ -74,5 +94,6 @@ public class PlayerHUDController : MonoBehaviour
     {
         if(!player.InWaterZone)
             pressToRefillText.gameObject.SetActive(false);
+            emptySourceText.gameObject.SetActive(false);
     }
 }

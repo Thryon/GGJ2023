@@ -39,6 +39,7 @@ public class WaterSource : MonoBehaviour
         {
             refillTime = 0f;
             RefillWater(Random.Range(100, 500));
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnWaterSourceRefilled);
             RefreshWaterLevel();
         }
         if (use10)
@@ -63,12 +64,12 @@ public class WaterSource : MonoBehaviour
     public void UseWater(int amount)
     {
         currentAmount -= amount;
-        if (currentAmount < 0)
+        if (currentAmount <= 0)
         {
             currentAmount = 0;
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnWaterSourceEmpty);
         }
         RefreshWaterLevel();
-
     }
     public void RefillWater(int amount)
     {
@@ -76,6 +77,7 @@ public class WaterSource : MonoBehaviour
         if (currentAmount > maxAmount)
         {
             currentAmount = maxAmount;
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnWaterSourceRefilled);
         }
         RefreshWaterLevel();
     }
