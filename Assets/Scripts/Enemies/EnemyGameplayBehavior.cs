@@ -7,6 +7,9 @@ public class EnemyGameplayBehavior : MonoBehaviour
     void Start()
     {
         destinationSetter = GetComponentInChildren<AIDestinationSetter>();
+        Debug.Log(destinationSetter);
+        Debug.Log(ReferencesSingleton.Instance);
+
         if (ReferencesSingleton.Instance != null)
             destinationSetter.target = ReferencesSingleton.Instance.treeRef.transform;
     }
