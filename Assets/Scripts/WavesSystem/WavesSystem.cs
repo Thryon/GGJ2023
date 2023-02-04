@@ -76,8 +76,7 @@ public class WavesSystem : MonoBehaviour
                     if ((int)spawnData.enemyType >= prefabs.Count || prefabs[(int)spawnData.enemyType] == null)
                         continue;
 
-                    float qtyMultiplier = 1 + (0.5f * (cycleIndex - 1));
-                    SpawnPoints[currentSpawnPoint].Spawn((int)(spawnData.quantity * qtyMultiplier), prefabs[(int)spawnData.enemyType]);
+                    SpawnPoints[currentSpawnPoint].Spawn((int)(spawnData.quantity * GetQtyMultiplier()), prefabs[(int)spawnData.enemyType]);
                     currentSpawnPoint = (currentSpawnPoint + 1) % SpawnPoints.Length;
 
                     yield return new WaitForSeconds(spawnData.delay);
@@ -107,6 +106,18 @@ public class WavesSystem : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         currentSpawnCoroutine = null;
+    }
+
+    public static float GetHealthMultiplier()
+    {
+        // 1 + (0.5f * (cycleIndex - 1)) => x1 premier cycle, puis x1.5, x2 etc
+        return 1 + (0.5f * (cycleIndex - 1));
+    }
+
+    public static float GetQtyMultiplier()
+    {
+        // 1 + (0.5f * (cycleIndex - 1)) => x1 premier cycle, puis x1.5, x2 etc
+        return 1 + (0.5f * (cycleIndex - 1));
     }
 
     private void OnDestroy()

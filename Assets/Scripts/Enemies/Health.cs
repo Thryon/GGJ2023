@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        MaxHealth = WavesSystem.cycleIndex * MaxHealth;
+        MaxHealth = (int)(WavesSystem.GetHealthMultiplier() * MaxHealth);
         currentHealth = MaxHealth;
         lootComp = GetComponent<LootComponent>();
     }
