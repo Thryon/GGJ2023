@@ -133,7 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loots:
   - prefab: {fileID: 4305202668975094838, guid: 051c4c9072513c14c88f6870dd621648, type: 3}
-    quantity: 3
+    minQuantity: 0
+    quantity: 2
   forceOnSpawn: 150
 --- !u!114 &1313225747634694435
 MonoBehaviour:
@@ -438,6 +439,7 @@ MonoBehaviour:
   damagePerHit: 1
   waterStolenByHit: 10
   delayBetweenAnimAndHit: 0.5
+  dontMove: 0
   AttackInterval: 3
   currentDebugState: 0
 --- !u!114 &7574200356432823854

@@ -7,6 +7,7 @@ public class LootComponent : MonoBehaviour
     public struct LootPrefabQuantity
     {
         public GameObject prefab;
+        public int minQuantity;
         public int quantity;
     }
 
@@ -21,7 +22,9 @@ public class LootComponent : MonoBehaviour
             if (loot.prefab == null || loot.quantity == 0)
                 continue;
 
-            for (int i = 0; i < loot.quantity; i++)
+            int computeQuantity = Random.Range(loot.minQuantity, loot.quantity + 1);
+
+            for (int i = 0; i < computeQuantity; i++)
             {
                 GameObject spawned = Instantiate(loot.prefab, transform.position + Vector3.up, Quaternion.identity);
                 Rigidbody rb = spawned.GetComponent<Rigidbody>();
