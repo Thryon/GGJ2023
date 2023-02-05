@@ -36,8 +36,13 @@ public class WaterReceiver : MonoBehaviour
     {
         foreach (var col in colliders)
         {
+            if (WaterSystem.Instance == null)
+                break;
+
             WaterSystem.Instance.UnregisterCollider(col);
         }
-        GlobalEvents.Instance.OnParticleCollisionEnter -= OnParticleCollisionEnter;
+
+        if (GlobalEvents.Instance != null)
+            GlobalEvents.Instance.OnParticleCollisionEnter -= OnParticleCollisionEnter;
     }
 }
