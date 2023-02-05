@@ -39,6 +39,7 @@ public class WaterEmitter : MonoBehaviour
 
     private void OnDestroy()
     {
-        WaterSystem.Instance.RemoveEmitter(this);
+        if (WaterSystem.Instance != null)
+            WaterSystem.Instance.RemoveEmitter(this);
     }
 }

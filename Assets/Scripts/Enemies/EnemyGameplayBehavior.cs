@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyGameplayBehavior : MonoBehaviour
 {
+    public float delayStartMovingOnSpawn = 1.0f;
+
     public class EnemyStateMachine : StateMachine
     {
         protected EnemyGameplayBehavior behavior;
@@ -26,7 +28,7 @@ public class EnemyGameplayBehavior : MonoBehaviour
     private Animator animator;
 
     private EnemyStateMachine stateMachine;
-    void Start()
+    IEnumerator Start()
     {
         destinationSetter = GetComponentInChildren<AIDestinationSetter>();
         aiPath = GetComponentInChildren<AIPath>();
@@ -42,6 +44,8 @@ public class EnemyGameplayBehavior : MonoBehaviour
         stateMachine.OnStateChanged += OnStateChanged;
         // Debug.Log(destinationSetter);
         // Debug.Log(ReferencesSingleton.Instance);
+
+        yield return new WaitForSeconds(delayStartMovingOnSpawn);
 
         if (ReferencesSingleton.Instance != null)
             destinationSetter.target = ReferencesSingleton.Instance.treeRef.transform;
