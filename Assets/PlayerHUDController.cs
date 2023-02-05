@@ -15,6 +15,10 @@ public class PlayerHUDController : MonoBehaviour
     [SerializeField] private TMP_Text emptySourceText;
     [SerializeField] private TMP_Text treeLife;
 
+
+    [SerializeField] private TMP_Text nextWaveInTxt;
+    [SerializeField] private TMP_Text needRefillTxt;
+
     void Start()
     {
         pressToRefillText.gameObject.SetActive(false);
@@ -26,6 +30,9 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnWaterSourceEmpty, OnWaterSourceEmpty);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnWaterSourceRefilled, OnWaterSourceRefilled);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemHit, UpdateTreeLife);
+
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
     }
 
     private void OnDestroy()
@@ -37,6 +44,9 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnWaterSourceEmpty, OnWaterSourceEmpty);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnWaterSourceRefilled, OnWaterSourceRefilled);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemHit, UpdateTreeLife);
+
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
     }
 
     private void OnWaterSourceEmpty()
@@ -106,5 +116,21 @@ public class PlayerHUDController : MonoBehaviour
     {
         if (treeLife != null)
             treeLife.SetText(_currentLife.ToString());
+    }
+
+    private void ShowHideNextWaveTimer(bool _show)
+    {
+        if (nextWaveInTxt == null)
+            return;
+
+        nextWaveInTxt.gameObject.SetActive(_show);
+    }
+
+    private void UpdateNextWaveTimer(int _time)
+    {
+        if (nextWaveInTxt == null)
+            return;
+
+        nextWaveInTxt.SetText("Next wave in " + _time + "s");
     }
 }

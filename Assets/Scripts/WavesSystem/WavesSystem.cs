@@ -51,9 +51,17 @@ public class WavesSystem : MonoBehaviour
         {
             for (int i = 0; i < waves.Count; i++)
             {
+                GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideNextWaveTimer, false);
+
                 currentSpawnCoroutine = StartCoroutine(SpawnWave(waves[i]));
 
                 yield return new WaitWhile(() => currentSpawnCoroutine != null);
+
+                GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideNextWaveTimer, true);
+                GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateNextWaveTimer, (int)globalDelayBetweenWaves);
+                shouldTrackTime = true;
+                currentTimer = globalDelayBetweenWaves;
+                lastUIUpdate = (int)globalDelayBetweenWaves;
 
                 yield return new WaitForSeconds(globalDelayBetweenWaves); // should be high to let the players explore a bit
             }
@@ -62,7 +70,25 @@ public class WavesSystem : MonoBehaviour
         }
     }
 
-    
+    bool shouldTrackTime = false;
+    float currentTimer = 0;
+    int lastUIUpdate = 0;
+    private void Update()
+    {
+        if (!shouldTrackTime)
+            return;
+
+        currentTimer -= Time.deltaTime;
+        if ((int)currentTimer != lastUIUpdate && currentTimer >= 0.0f)
+        {
+            lastUIUpdate = (int)currentTimer;
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateNextWaveTimer, lastUIUpdate);
+        }
+
+        if (currentTimer <= 0.0f)
+            shouldTrackTime = false;
+    }
+
     int currentSpawnPoint = 0;
     IEnumerator SpawnWave(WaveSO _waveToSpawn)
     {

@@ -25,6 +25,9 @@ public enum GlobalEventEnum
     CloseUpgradeMenu,
     OnUpgradeMenuOpened,
     OnUpgradeMenuClosed,
+    ShowHideNextWaveTimer,
+    HideNextWaveTimer,
+    UpdateNextWaveTimer,
     Size
 }
 
