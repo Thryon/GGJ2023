@@ -13,6 +13,7 @@ public class PlayerHUDController : MonoBehaviour
 
     [SerializeField] private TMP_Text pressToRefillText;
     [SerializeField] private TMP_Text emptySourceText;
+    [SerializeField] private TMP_Text treeLife;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnLoseWater, OnLoseWater);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnWaterSourceEmpty, OnWaterSourceEmpty);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnWaterSourceRefilled, OnWaterSourceRefilled);
-
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemHit, UpdateTreeLife);
     }
 
     private void OnDestroy()
@@ -35,7 +36,7 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnLoseWater, OnLoseWater);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnWaterSourceEmpty, OnWaterSourceEmpty);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnWaterSourceRefilled, OnWaterSourceRefilled);
-
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemHit, UpdateTreeLife);
     }
 
     private void OnWaterSourceEmpty()
@@ -99,5 +100,11 @@ public class PlayerHUDController : MonoBehaviour
         if(!player.InWaterZone)
             pressToRefillText.gameObject.SetActive(false);
             emptySourceText.gameObject.SetActive(false);
+    }
+
+    void UpdateTreeLife(int _currentLife)
+    {
+        if (treeLife != null)
+            treeLife.SetText(_currentLife.ToString());
     }
 }

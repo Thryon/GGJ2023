@@ -18,6 +18,8 @@ public enum GlobalEventEnum
     OnWaterSourceRefilled,
     OnGainSeed,
     CameraShake,
+    OnGemHit,
+    OnGemDeath,
     Size
 }
 
@@ -43,14 +45,21 @@ public class GlobalEvents : MonoBehaviour
         OnParticleCollisionEnter?.Invoke(collider, particle, position, direction);
     }
 
-    public static GlobalEvents Instance = null;
+    public static GlobalEvents Instance {
+        get {
+            if (instance == null)
+                instance = FindObjectOfType<GlobalEvents>();
+            return instance;
+        }
+    }
 
+    static GlobalEvents instance = null;
     void Start()
     {
-        if (Instance != null)
+        if (instance != null)
             Destroy(this);
         else
-            Instance = this;
+            instance = this;
 
     }
 
