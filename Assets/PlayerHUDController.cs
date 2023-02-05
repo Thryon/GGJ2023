@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using KinematicCharacterController;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerHUDController : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private WaterReservoirUI waterReservoirUI;
+    [FormerlySerializedAs("waterReservoirUISlider")] [FormerlySerializedAs("waterReservoirUI")] [SerializeField] private PlayerWaterReservoirUISlider playerWaterReservoirUISlider;
 
     [SerializeField] private TMP_Text pressToRefillText;
     [SerializeField] private TMP_Text emptySourceText;
@@ -49,8 +50,11 @@ public class PlayerHUDController : MonoBehaviour
 
     private void OnWaterSourceRefilled()
     {
-        pressToRefillText.gameObject.SetActive(true);
-        emptySourceText.gameObject.SetActive(false);
+        if (player.CurrentWaterSource != null)
+        {
+            pressToRefillText.gameObject.SetActive(true);
+            emptySourceText.gameObject.SetActive(false);
+        }
     }
 
     void OnEnterWaterZone()

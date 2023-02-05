@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaterReservoirUI : MonoBehaviour
+public class PlayerWaterReservoirUISlider : MonoBehaviour
 {
     [SerializeField] private Slider waterSlider;
     [SerializeField] private WaterReservoir waterReservoir;

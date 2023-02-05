@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaterReservoir : MonoBehaviour
 {
     [SerializeField] private int maxAmount = 100;
-    
+    [SerializeField] private bool playerReservoir = false;
+    public UnityEvent<float> OnFillRateChanged;
     public int MaxAmount => maxAmount;
-    
+    [SerializeField]
     private int amount = 0;
 
     public int Amount
@@ -22,8 +24,11 @@ public class WaterReservoir : MonoBehaviour
         {
             amount = value;
             amount = Mathf.Clamp(amount, 0, maxAmount);
+            OnFillRateChanged?.Invoke(FillValue);
         }
     }
+
+    public float FillValue => (float)amount / maxAmount;
 
     /// <summary>
     /// Returns the rest that couldn't be used
@@ -36,7 +41,8 @@ public class WaterReservoir : MonoBehaviour
         if (rest > 0)
             amount = amount - rest;
         Amount -= amount;
-        GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnLoseWater, Amount);
+        if(playerReservoir)
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnLoseWater, Amount);
         return Mathf.Max(rest, 0);
     }
 
@@ -46,7 +52,8 @@ public class WaterReservoir : MonoBehaviour
         if (overflow > 0)
             amount = amount - overflow;
         Amount += amount;
-        GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGainWater, Amount);
+        if(playerReservoir)
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGainWater, Amount);
         return Mathf.Max(overflow, 0);
     }
 

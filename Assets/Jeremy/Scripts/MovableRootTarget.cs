@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using KinematicCharacterController;
 
 public class MovableRootTarget : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MovableRootTarget : MonoBehaviour
     public TreeRoot root;
     public BehaviorRoot behavior;
     public LayerMask detectionLayer;
+    public bool targetCamera;
     public float detectionRadius;
     public float followSpeed;
 
@@ -74,8 +76,17 @@ public class MovableRootTarget : MonoBehaviour
             if (targetFollow == null && detection == false)
                 detection = true;
 
-            // Maintain focus
-            targetFollow = closest.transform;
+            if (targetCamera)
+            {
+                // Maintain focus
+                targetFollow = closest.GetComponentInParent<Player>().GetComponentInChildren<Camera>().transform;
+            }
+            else
+            {
+                // Maintain focus
+                targetFollow = closest.transform;
+            }
+            
         }
         else
             targetFollow = null;

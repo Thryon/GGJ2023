@@ -41,9 +41,23 @@ public class HitFlash : MonoBehaviour
     {
         foreach (var mat in materials)
         {
-            Color color = mat.GetColor(Color1);
-            color.a = alpha;
-            mat.SetColor(Color1, color);
+            RefreshMaterialAlpha(mat);
+        }
+    }
+
+    void RefreshMaterialAlpha(Material mat)
+    {
+        Color color = mat.GetColor(Color1);
+        color.a = alpha;
+        mat.SetColor(Color1, color);
+    }
+
+    private void OnDisable()
+    {
+        alpha = 0;
+        foreach (var mat in materials)
+        {
+            RefreshMaterialAlpha(mat);
         }
     }
 }
