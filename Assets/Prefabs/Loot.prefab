@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6001390028710419342}
-  - component: {fileID: 8187154852976032959}
   - component: {fileID: 455062612317362471}
+  - component: {fileID: 980850550912544168}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Untagged
@@ -37,8 +37,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8187154852976032959
-BoxCollider:
+--- !u!114 &455062612317362471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305202668975094838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bb26c165cd0544581ababcd1de097c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootType: 0
+  amount: 1
+--- !u!135 &980850550912544168
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -56,22 +70,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7, y: 0.7, z: 0.7}
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &455062612317362471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4305202668975094838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4bb26c165cd0544581ababcd1de097c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lootType: 0
-  amount: 1
 --- !u!1 &7360905445113374866
 GameObject:
   m_ObjectHideFlags: 0

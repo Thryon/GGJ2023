@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: 
   spawnDatas:
+  - enemyType: 2
+    quantity: 3
+    delay: 0
   - enemyType: 0
     quantity: 5
-    delay: 2
+    delay: 0
   - enemyType: 1
     quantity: 3
     delay: 0
