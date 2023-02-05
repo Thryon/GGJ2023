@@ -15,10 +15,10 @@ MonoBehaviour:
   spawnDatas:
   - enemyType: 2
     quantity: 3
-    delay: 0
+    delay: 2
   - enemyType: 0
     quantity: 5
-    delay: 0
+    delay: 2
   - enemyType: 1
     quantity: 3
-    delay: 0
+    delay: 2
