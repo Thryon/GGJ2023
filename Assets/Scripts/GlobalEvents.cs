@@ -31,6 +31,7 @@ public enum GlobalEventEnum
     ShowHideRefillText,
     ShowHideLootAppeared,
     UpdateLootText,
+    OnLoseSeed,
     Size
 }
 

@@ -140,6 +140,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   container: {fileID: 8372251395057100025}
+  UpgradeText: {fileID: 0}
+  upgradeButtons:
+  - {fileID: 8372251396280196610}
+  - {fileID: 1794218272620556275}
+  - {fileID: 6571248940691188716}
 --- !u!1001 &3685083438938619874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,11 +155,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3153174902465154073, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_text
-      value: Upgrade Damage
+      value: Upgrade Fire Rate
       objectReference: {fileID: 0}
     - target: {fileID: 3153174902465154075, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Name
-      value: TextDamage
+      value: TextFireRate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8372251396476469910}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3153174903210659858, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Pivot.x
@@ -242,19 +263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3153174903210659859, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Name
-      value: ButtonUpgradeDamage
+      value: ButtonUpgradeFireRate
       objectReference: {fileID: 0}
     - target: {fileID: 4163257337416918402, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Name
-      value: TextDamageCost
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735687459784182067, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820871625770220205, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_text
-      value: 97
+      value: TextFireRateCost
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -266,6 +279,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3153174903210659858, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
   m_PrefabInstance: {fileID: 3685083438938619874}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794218272620556275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3153174903210659857, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+  m_PrefabInstance: {fileID: 3685083438938619874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbd7b0c94ccd38459bf8ea73e9d07b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5266069374812601399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,17 +394,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonUpgradeCleave
       objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659859, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4163257337416918402, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Name
       value: TextCleaveCost
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735687459784182067, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820871625770220205, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_text
-      value: 99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -516,16 +536,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonPower
       objectReference: {fileID: 0}
-    - target: {fileID: 4735687459784182067, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820871625770220205, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_text
-      value: 100
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3153174903210659857, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -535,6 +546,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3153174903210659858, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
   m_PrefabInstance: {fileID: 6913700077869518355}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8372251396280196610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3153174903210659857, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+  m_PrefabInstance: {fileID: 6913700077869518355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbd7b0c94ccd38459bf8ea73e9d07b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8139015829254781949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -550,6 +572,22 @@ PrefabInstance:
     - target: {fileID: 3153174902465154075, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Name
       value: TextTankSize
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8372251396476469910}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3153174903210659858, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Pivot.x
@@ -643,15 +681,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextTankSizeCost
       objectReference: {fileID: 0}
-    - target: {fileID: 4735687459784182067, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -27
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+--- !u!114 &6571248940691188716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3153174903210659857, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+  m_PrefabInstance: {fileID: 8139015829254781949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efbd7b0c94ccd38459bf8ea73e9d07b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6571248940691188719 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3153174903210659858, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
