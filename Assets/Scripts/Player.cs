@@ -40,6 +40,19 @@ namespace KinematicCharacterController
             // Ignore the character's collider(s) for camera obstruction checks
             CharacterCamera.IgnoredColliders.Clear();
             CharacterCamera.IgnoredColliders.AddRange(Character.GetComponentsInChildren<Collider>());
+            
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnUpgradeMenuOpened, OnUpgradeMenuOpened);
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnUpgradeMenuClosed, OnUpgradeMenuClosed);
+        }
+
+        private void OnUpgradeMenuClosed()
+        {
+            isUpgradeMenuOpen = false;
+        }
+
+        private void OnUpgradeMenuOpened()
+        {
+            isUpgradeMenuOpen = true;
         }
 
         private void OnDestroy()
@@ -118,7 +131,6 @@ namespace KinematicCharacterController
             Time.timeScale = 0.2f;
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.OpenUpgradeMenu);
             Cursor.lockState = CursorLockMode.None;
-            isUpgradeMenuOpen = true;
         }
 
         void CloseUpgradeMenu()
@@ -126,7 +138,6 @@ namespace KinematicCharacterController
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.CloseUpgradeMenu);
-            isUpgradeMenuOpen = false;
         }
 
         private void FixedUpdate()

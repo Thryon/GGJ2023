@@ -23,6 +23,8 @@ public enum GlobalEventEnum
     BigCameraShake,
     OpenUpgradeMenu,
     CloseUpgradeMenu,
+    OnUpgradeMenuOpened,
+    OnUpgradeMenuClosed,
     Size
 }
 

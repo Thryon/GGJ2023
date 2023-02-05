@@ -16,10 +16,12 @@ public class UpgradeMenu : MonoBehaviour
     private void Close()
     {
         container.SetActive(false);
+        GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnUpgradeMenuClosed);
     }
 
     private void Open()
     {
         container.SetActive(true);
+        GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnUpgradeMenuOpened);
     }
 }
