@@ -19,8 +19,9 @@ public class PlayerHUDController : MonoBehaviour
     [SerializeField] private TMP_Text nextWaveInTxt;
     [SerializeField] private TMP_Text needRefillTxt;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
         pressToRefillText.gameObject.SetActive(false);
         emptySourceText.gameObject.SetActive(false);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnEnterInteractWithWaterZone, OnEnterWaterZone);
