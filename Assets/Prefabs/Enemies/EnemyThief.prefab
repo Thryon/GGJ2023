@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loots:
   - prefab: {fileID: 4305202668975094838, guid: 7554e61518639fe47aaa6cd805c4a70e, type: 3}
+    minQuantity: 0
     quantity: 1
   forceOnSpawn: 150
 --- !u!114 &1313225747634694435
@@ -353,7 +354,7 @@ MonoBehaviour:
   radius: 1
   height: 2
   canMove: 1
-  maxSpeed: 3
+  maxSpeed: 4
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -436,9 +437,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayStartMovingOnSpawn: 1
-  damagePerHit: 1
+  damagePerHit: 2
   waterStolenByHit: 10
   delayBetweenAnimAndHit: 0.5
+  dontMove: 0
   AttackInterval: 3
   currentDebugState: 0
 --- !u!114 &4223859496321681435
@@ -453,6 +455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9be9235309800647b8e4517ec9f69a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedChasePlayer: 8
+  attackIntervalChasePlayer: 1
 --- !u!114 &7574200356432823854
 MonoBehaviour:
   m_ObjectHideFlags: 0
