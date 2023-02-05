@@ -144,13 +144,13 @@ namespace KinematicCharacterController
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.CloseUpgradeMenu);
         }
 
-        private void FixedUpdate()
-        {
-            if (Input.GetMouseButton(1))
-            {
-                WaterReservoir.RefillWater(5);
-            }
-        }
+        // private void FixedUpdate()
+        // {
+        //     if (Input.GetMouseButton(1))
+        //     {
+        //         WaterReservoir.RefillWater(5);
+        //     }
+        // }
 
         private void LateUpdate()
         {
