@@ -165,7 +165,7 @@ public class EnemyGameplayBehavior : MonoBehaviour
         private float attackTimer = 0f;
         public override void OnEnterState(States previousState)
         {
-            attackTimer = 0f;
+            attackTimer = Behavior.AttackInterval;
         }
 
         public override void OnStateUpdate(float deltaTime)
