@@ -140,10 +140,10 @@ public class PlayerUpgrader : MonoBehaviour
         return (int)Mathf.Lerp(MinGunFireRatePrice, MaxGunFireRatePrice, t);
     }
 
-    public void UpgradePower(int upgradeCost)
+    public void UpgradePower()
     {
         GunPowerLevel++;
-        ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(upgradeCost);
+        ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(GetNextPowerLevelPrice());
         RefreshGunPower();
     }
 
