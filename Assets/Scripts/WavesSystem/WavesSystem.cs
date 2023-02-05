@@ -179,7 +179,8 @@ public class WavesSystem : MonoBehaviour
 
     private void OnDestroy()
     {
-        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemDeath, StopWaves);
+        if (GlobalEvents.Instance)
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemDeath, StopWaves);
 
         stop = true;
     }

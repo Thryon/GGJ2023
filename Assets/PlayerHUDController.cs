@@ -53,6 +53,9 @@ public class PlayerHUDController : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (GlobalEvents.Instance == null)
+            return;
+
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnEnterInteractWithWaterZone, OnEnterWaterZone);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnExitInteractWithWaterZone, OnExitWaterZone);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGainWater, OnGainWater);
