@@ -33,6 +33,7 @@ public class PlayerHUDController : MonoBehaviour
 
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideRefillText, ShowHideRefill);
     }
 
     private void OnDestroy()
@@ -47,6 +48,7 @@ public class PlayerHUDController : MonoBehaviour
 
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideRefillText, ShowHideRefill);
     }
 
     private void OnWaterSourceEmpty()
@@ -132,5 +134,29 @@ public class PlayerHUDController : MonoBehaviour
             return;
 
         nextWaveInTxt.SetText("Next wave in " + _time + "s");
+    }
+
+    private void ShowHideRefill(bool _show)
+    {
+        if (needRefillTxt == null)
+            return;
+
+        needRefillTxt.gameObject.SetActive(_show);
+
+        if (_show)
+        {
+            if (showRefillCoroutine != null)
+                StopCoroutine(showRefillCoroutine);
+
+            showRefillCoroutine = StartCoroutine(ShowRefillText());
+        }
+    }
+
+    Coroutine showRefillCoroutine = null;
+    IEnumerator ShowRefillText()
+    {
+        yield return new WaitForSeconds(1.5f);
+        ShowHideRefill(false);
+        showRefillCoroutine = null;
     }
 }
