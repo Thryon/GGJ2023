@@ -18385,6 +18385,7 @@ MonoBehaviour:
   Inventory: {fileID: 7027446391628218385}
   PlayerUpgrader: {fileID: 1262982046}
   fireRate: 100
+  waterRefillRate: 20
 --- !u!114 &403585906
 MonoBehaviour:
   m_ObjectHideFlags: 0

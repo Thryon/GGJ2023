@@ -16,6 +16,7 @@ namespace KinematicCharacterController
         public PlayerUpgrader PlayerUpgrader;
 
         [SerializeField] private float fireRate = 100f;
+        [SerializeField] private float waterRefillRate = 100f;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -92,7 +93,7 @@ namespace KinematicCharacterController
             if(isRefilling)
             {
                 waterRefillTimer += Time.deltaTime;
-                float fireRateInterval = fireRate * 100f;
+                float fireRateInterval = waterRefillRate / 1000f;
                 while (waterRefillTimer >= fireRateInterval)
                 {
                     Debug.Log(CurrentWaterSource.currentAmount);
