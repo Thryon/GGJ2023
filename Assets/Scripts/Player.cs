@@ -14,7 +14,7 @@ namespace KinematicCharacterController
         public WaterReservoir WaterReservoir;
         public Inventory Inventory;
 
-        [SerializeField] private float waterRefillInterval = 0.01f;
+        [SerializeField] private float fireRate = 100f;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -77,7 +77,8 @@ namespace KinematicCharacterController
             if(isRefilling)
             {
                 waterRefillTimer += Time.deltaTime;
-                while (waterRefillTimer >= waterRefillInterval)
+                float fireRateInterval = fireRate * 100f;
+                while (waterRefillTimer >= fireRateInterval)
                 {
                     if (CurrentWaterSource.currentAmount > 0 && !WaterReservoir.IsFull())
                     {
@@ -88,7 +89,7 @@ namespace KinematicCharacterController
                             break;
                         }
 
-                        waterRefillTimer -= waterRefillInterval;
+                        waterRefillTimer -= fireRateInterval;
                     }
                     else
                     {
@@ -178,6 +179,11 @@ namespace KinematicCharacterController
         {
             currentWaterSource = null;
             inWaterZone = false;
+        }
+
+        public void SetFireRate(float f)
+        {
+            fireRate = f;
         }
     }
 }

@@ -34,15 +34,14 @@ public class WaterReceiver : MonoBehaviour
 
     protected void OnDestroy()
     {
-        foreach (var col in colliders)
+        if (WaterSystem.Instance)
         {
-            if (WaterSystem.Instance == null)
-                break;
-
-            WaterSystem.Instance.UnregisterCollider(col);
+            foreach (var col in colliders)
+            {
+                WaterSystem.Instance.UnregisterCollider(col);
+            }
         }
-
-        if (GlobalEvents.Instance != null)
+        if (GlobalEvents.Instance)
             GlobalEvents.Instance.OnParticleCollisionEnter -= OnParticleCollisionEnter;
     }
 }

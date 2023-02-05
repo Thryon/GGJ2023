@@ -66,4 +66,9 @@ public class WaterReservoir : MonoBehaviour
     {
         return amount == 0;
     }
+
+    public void SetMaxAmount(int amount)
+    {
+        maxAmount = amount;
+    }
 }
