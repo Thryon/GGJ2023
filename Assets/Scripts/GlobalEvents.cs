@@ -32,6 +32,7 @@ public enum GlobalEventEnum
     ShowHideLootAppeared,
     UpdateLootText,
     OnLoseSeed,
+    UpdateLosePanel,
     Size
 }
 

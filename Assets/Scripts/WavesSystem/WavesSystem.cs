@@ -38,12 +38,18 @@ public class WavesSystem : MonoBehaviour
         stop = false;
         SpawnPoints = FindObjectsOfType<SpawnPoint>();
 
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemDeath, StopWaves);
+
         yield return new WaitForSeconds(initialDelay);
 
         handleWavesCoroutine = StartCoroutine(HandleWaves());
 
     }
 
+    void StopWaves()
+    {
+        stop = true;
+    }
 
     IEnumerator HandleWaves()
     {
@@ -58,11 +64,18 @@ public class WavesSystem : MonoBehaviour
                     yield return new WaitForSeconds(3.0f);
                 }
 
+                if (stop)
+                    break;
+
                 GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideNextWaveTimer, false);
 
                 currentSpawnCoroutine = StartCoroutine(SpawnWave(waves[i]));
 
+                GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateLosePanel, (cycleIndex-1) * waves.Count + i);
+
                 yield return new WaitWhile(() => currentSpawnCoroutine != null);
+                if (stop)
+                    break;
 
                 GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideNextWaveTimer, true);
                 GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateNextWaveTimer, (int)globalDelayBetweenWaves);
@@ -71,6 +84,8 @@ public class WavesSystem : MonoBehaviour
                 lastUIUpdate = (int)globalDelayBetweenWaves;
 
                 yield return new WaitForSeconds(globalDelayBetweenWaves); // should be high to let the players explore a bit
+                if (stop)
+                    break;
             }
 
             cycleIndex++;
@@ -164,6 +179,8 @@ public class WavesSystem : MonoBehaviour
 
     private void OnDestroy()
     {
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemDeath, StopWaves);
+
         stop = true;
     }
 }

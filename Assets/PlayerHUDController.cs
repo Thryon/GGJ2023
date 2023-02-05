@@ -20,6 +20,8 @@ public class PlayerHUDController : MonoBehaviour
     [SerializeField] private TMP_Text needRefillTxt;
     [SerializeField] private TMP_Text lootAppeared;
 
+    public GameObject losePanel;
+    public TMP_Text currentWave;
 
     IEnumerator Start()
     {
@@ -42,6 +44,8 @@ public class PlayerHUDController : MonoBehaviour
 
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemHit, PlayGemHitAnim);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemDeath, ShowLoseScreen);
+        
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateLosePanel, UpdateLosePanel);
 
         player = ReferencesSingleton.Instance.player;
     }
@@ -65,10 +69,12 @@ public class PlayerHUDController : MonoBehaviour
 
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemHit, PlayGemHitAnim);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemDeath, ShowLoseScreen);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateLosePanel, UpdateLosePanel);
+
     }
 
     Animator treelifeAnimator;
-    void PlayGemHitAnim()
+    void PlayGemHitAnim(int amount)
     {
         if (treelifeAnimator == null)
             treelifeAnimator = treeLife.GetComponentInParent<Animator>();
@@ -78,7 +84,12 @@ public class PlayerHUDController : MonoBehaviour
 
     void ShowLoseScreen()
     {
+        losePanel.SetActive(true);
 
+        // stop player
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnWaterSourceEmpty()
@@ -220,5 +231,10 @@ public class PlayerHUDController : MonoBehaviour
             return;
 
         lootAppeared.SetText(_text);
+    }
+
+    void UpdateLosePanel(int _currentWave)
+    {
+        currentWave.SetText("Current wave: " + _currentWave);
     }
 }
