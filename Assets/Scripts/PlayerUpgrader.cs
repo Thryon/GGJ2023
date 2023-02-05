@@ -182,29 +182,29 @@ public class PlayerUpgrader : MonoBehaviour
 
     public void UpgradePower()
     {
-        GunPowerLevel++;
         ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(GetNextPowerLevelPrice());
+        GunPowerLevel++;
         RefreshGunPower();
     }
 
     public void UpgradeCleave(int upgradeCost)
     {
-        GunWidthLevel++;
         ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(upgradeCost);
+        GunWidthLevel++;
         RefreshGunCleave();
     }
     
     public void UpgradeCapacity()
     {
-        GunCapacityLevel++;
         ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(GetNextCapacityLevelPrice());
+        GunCapacityLevel++;
         RefreshGunCapacity();
     }
     
     public void UpgradeFireRate()
     {
-        GunFireRateLevel++;
         ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(GetNextFireRateLevelPrice());
+        GunFireRateLevel++;
         RefreshGunFireRate();
     }
 
