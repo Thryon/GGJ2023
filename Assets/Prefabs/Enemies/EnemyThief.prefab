@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 3428531769366981349}
   - component: {fileID: 3428531769366981293}
   - component: {fileID: -4541172343348505379}
+  - component: {fileID: 4223859496321681435}
   - component: {fileID: 7574200356432823854}
   - component: {fileID: 7066308772778257357}
   - component: {fileID: 3783802825324267605}
@@ -440,6 +441,18 @@ MonoBehaviour:
   delayBetweenAnimAndHit: 0.5
   AttackInterval: 3
   currentDebugState: 0
+--- !u!114 &4223859496321681435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428531769366981254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9be9235309800647b8e4517ec9f69a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7574200356432823854
 MonoBehaviour:
   m_ObjectHideFlags: 0

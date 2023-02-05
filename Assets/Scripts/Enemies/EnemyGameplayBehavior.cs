@@ -21,7 +21,7 @@ public class EnemyGameplayBehavior : MonoBehaviour
         }
     }
 
-    [SerializeField] private float AttackInterval;
+    [SerializeField] public float AttackInterval;
     [SerializeField] private States currentDebugState;
     
     private AIDestinationSetter destinationSetter;
