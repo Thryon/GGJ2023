@@ -6,6 +6,9 @@ using UnityEngine;
 public class EnemyGameplayBehavior : MonoBehaviour
 {
     public float delayStartMovingOnSpawn = 1.0f;
+    public int damagePerHit = 1;
+    public int waterStolenByHit = 10;
+    public float delayBetweenAnimAndHit = 0.5f;
 
     public class EnemyStateMachine : StateMachine
     {
@@ -54,6 +57,25 @@ public class EnemyGameplayBehavior : MonoBehaviour
     private void Update()
     {
         stateMachine.Update(Time.deltaTime);
+    }
+
+    public void InvokeDealDamage()
+    {
+        Invoke("DealDamage", delayBetweenAnimAndHit);
+    }
+
+    void DealDamage()
+    {
+        Transform target = destinationSetter.target;
+        if (target != null)
+        {
+            if (target.GetComponentInChildren<Gem>())
+                target.GetComponentInChildren<Health>().TakeDamage(damagePerHit);
+            else if (target.CompareTag("Player"))
+            {
+                ReferencesSingleton.Instance.player.WaterReservoir.UseWater(waterStolenByHit);
+            }
+        }
     }
 
     private void OnStateChanged(States previousstate, States nextstate)
@@ -167,6 +189,7 @@ public class EnemyGameplayBehavior : MonoBehaviour
         void Attack()
         {
             Behavior.animator.SetTrigger("Attack");
+            StateMachine.Behavior.InvokeDealDamage();
             // attackRoutine = Behavior.StartCoroutine(AttackCoroutine);
         }
 
