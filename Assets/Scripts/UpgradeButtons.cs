@@ -37,7 +37,7 @@ public class UpgradeButton : MonoBehaviour
             button.interactable = affordable;
         }
 
-        LevelText.text = $"Lv. {currentLevel}/{isMaxLevel}";
+        LevelText.text = $"Lv. {currentLevel}/{maxLevel}";
     }
 
     public void Upgrade()
