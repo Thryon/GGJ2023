@@ -361,9 +361,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  PriceText: {fileID: 0}
-  LevelText: {fileID: 0}
-  button: {fileID: 0}
+  PriceText: {fileID: 6024876226387222603}
+  LevelText: {fileID: 8820871625770220205}
+  button: {fileID: 3153174903210659856}
 --- !u!1 &4163257337416918402
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 7449731436875241719}
   - component: {fileID: 8820871625770220205}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

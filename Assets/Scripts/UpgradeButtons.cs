@@ -1,13 +1,14 @@
 using System;
 using KinematicCharacterController;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
     public PlayerUpgrader.UpgradeType Type;
-    public Text PriceText;
-    public Text LevelText;
+    public TMP_Text PriceText;
+    public TMP_Text LevelText;
     public Button button;
 
     public delegate void UpgradeEvent(PlayerUpgrader.UpgradeType Type);

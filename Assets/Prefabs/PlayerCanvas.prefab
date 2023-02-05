@@ -1874,6 +1874,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5165956598703386051}
     m_Modifications:
+    - target: {fileID: 8372251395057100025, guid: bf821d6bfe4041c4d980569d6031acea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372251396476469904, guid: bf821d6bfe4041c4d980569d6031acea, type: 3}
+      propertyPath: UpgradeText
+      value: 
+      objectReference: {fileID: 4142879292710638288}
     - target: {fileID: 8372251396476469910, guid: bf821d6bfe4041c4d980569d6031acea, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu
