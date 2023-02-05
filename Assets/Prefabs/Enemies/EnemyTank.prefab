@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4e94d5c38897d4db14e2d2f89b6deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 80
+  MaxHealth: 200
   delayDestroyOnDeath: 10
   OnDeathEvent:
     m_PersistentCalls:
@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 3428531769366981248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7479266085901651685}
@@ -596,6 +596,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 4cabcc4dedf2e1b40b32aabfc44ad025, type: 2}
+    - target: {fileID: 137605199003201920, guid: 927c2b4124b320e4ebdbb096c09e072c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 137605199003201920, guid: 927c2b4124b320e4ebdbb096c09e072c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe746cb11c7a10646888abbba16030c0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
