@@ -69,7 +69,7 @@ public class PlayerUpgrader : MonoBehaviour
     {
         if (levelUpPower)
         {
-            UpgradePower(1);
+            UpgradePower();
         }
 
         if (levelDownPower)

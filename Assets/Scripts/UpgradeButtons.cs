@@ -13,6 +13,6 @@ public class UpgradeButton : MonoBehaviour
 
     private void UpgradePower()
     {
-        PlayerUpgrader.UpgradePower(10);
+        PlayerUpgrader.UpgradePower();
     }
 }
