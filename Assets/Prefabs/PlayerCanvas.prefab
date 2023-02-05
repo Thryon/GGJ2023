@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 332343615}
   - component: {fileID: 332343618}
   - component: {fileID: 332343617}
-  - component: {fileID: 332343616}
   m_Layer: 5
   m_Name: SeedCounter
   m_TagString: Untagged
@@ -139,20 +138,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &332343616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332343614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f1e6b1e0ddaef43952a559dcee138e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Seeds: 0
-  seedCounterText: {fileID: 332343617}
 --- !u!1 &1235346872
 GameObject:
   m_ObjectHideFlags: 0

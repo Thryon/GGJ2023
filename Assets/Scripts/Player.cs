@@ -95,6 +95,7 @@ namespace KinematicCharacterController
                 float fireRateInterval = fireRate * 100f;
                 while (waterRefillTimer >= fireRateInterval)
                 {
+                    Debug.Log(CurrentWaterSource.currentAmount);
                     if (CurrentWaterSource.currentAmount > 0 && !WaterReservoir.IsFull())
                     {
                         CurrentWaterSource.UseWater(1);
