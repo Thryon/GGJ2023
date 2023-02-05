@@ -20,7 +20,7 @@ public class CollectOnTriggerEnter : MonoBehaviour
     }
 
     float lerpParam = 0.0f;
-    float lerpSpeed = 3.0f;
+    float lerpSpeed = 4.0f;
 
     private void Update()
     {

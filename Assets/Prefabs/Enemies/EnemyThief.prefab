@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  anim: {fileID: 0}
+  anim: {fileID: 3572869949579649081}
   endOfPathEffect: {fileID: 0}
 --- !u!114 &3428531769366981349
 MonoBehaviour:
@@ -462,6 +462,7 @@ MonoBehaviour:
   - {fileID: 1883629356}
   - {fileID: 7066308772778257357}
   - {fileID: 3783802825324267605}
+  - {fileID: 5573567254726432851}
   ragdollColliders:
   - {fileID: 6536108931691176567}
   - {fileID: 8048712606710834339}
@@ -549,7 +550,6 @@ GameObject:
   - component: {fileID: 8626238207134049815}
   - component: {fileID: 5470731440383592863}
   - component: {fileID: 5060600968798522122}
-  - component: {fileID: 4885932044525716569}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -811,28 +811,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8658057639278897319}
-  m_Mesh: {fileID: 0}
---- !u!64 &4885932044525716569
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8658057639278897319}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1001 &3515024754362189819
 PrefabInstance:
