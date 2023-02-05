@@ -17,9 +17,10 @@ public enum GlobalEventEnum
     OnWaterSourceEmpty,
     OnWaterSourceRefilled,
     OnGainSeed,
-    CameraShake,
+    SmallCameraShake,
     OnGemHit,
     OnGemDeath,
+    BigCameraShake,
     Size
 }
 

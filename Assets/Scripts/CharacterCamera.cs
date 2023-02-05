@@ -77,12 +77,18 @@ namespace KinematicCharacterController
 
         private void Start()
         {
-            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.CameraShake, (GlobalEvents.EventFloat)DoCameraShake);
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.SmallCameraShake, (GlobalEvents.EventFloat)DoSmallCameraShake);
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.BigCameraShake, (GlobalEvents.EventFloat)DoBigCameraShake);
         }
 
-        private void DoCameraShake(float duration)
+        private void DoSmallCameraShake(float duration)
         {
             shaker.DOShakePosition(duration, 0.005f, 10, 50f);
+        }
+        
+        private void DoBigCameraShake(float duration)
+        {
+            shaker.DOShakePosition(duration, 0.05f, 10, 50f);
         }
 
         // Set the transform that the camera will orbit around
