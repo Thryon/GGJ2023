@@ -43,6 +43,10 @@ public class WaterReservoir : MonoBehaviour
         Amount -= amount;
         if(playerReservoir)
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnLoseWater, Amount);
+        
+        if (Amount <= 0)
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideRefillText, true);
+
         return Mathf.Max(rest, 0);
     }
 
@@ -54,6 +58,9 @@ public class WaterReservoir : MonoBehaviour
         Amount += amount;
         if(playerReservoir)
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGainWater, Amount);
+
+        GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideRefillText, false);
+
         return Mathf.Max(overflow, 0);
     }
 
