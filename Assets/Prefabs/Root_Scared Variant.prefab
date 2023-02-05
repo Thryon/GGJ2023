@@ -20,10 +20,6 @@ PrefabInstance:
       propertyPath: followSpeed
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 6485302848147926950, guid: 80d957273a7dcd047910d994de237bd6, type: 3}
-      propertyPath: detectionRadius
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 7791380373181426619, guid: 80d957273a7dcd047910d994de237bd6, type: 3}
       propertyPath: m_Name
       value: Root_Scared

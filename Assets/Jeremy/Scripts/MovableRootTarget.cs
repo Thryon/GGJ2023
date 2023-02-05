@@ -15,20 +15,34 @@ public class MovableRootTarget : MonoBehaviour
     public float detectionRadius;
     public float followSpeed;
 
+    [Header("Idle")]
+    public float wanderRadius = 2f;
+    public float wanderSpeed = 2f;
+    public float wanderFocusTime = 1f;
+    public bool alwaysVisible = false;
+
     private bool detection;
     private Transform targetFollow;
     private Vector3 startPosition;
+
+    private float currentWanderTime = 0f;
+    private Vector3 wanderDestination;
 
     private IEnumerator Start()
     {
         yield return null;
 
         startPosition = transform.position;
+        wanderDestination = transform.position;
+        currentWanderTime = 0f; 
 
         switch (behavior)
         {
             case BehaviorRoot.followTarget:
-                root.Shrink();
+                if (alwaysVisible)
+                    root.ActivateOnTarget(transform);
+                else
+                    root.Shrink();
                 break;
             case BehaviorRoot.avoidTarget:
                 root.ActivateOnTarget(transform);
@@ -95,11 +109,11 @@ public class MovableRootTarget : MonoBehaviour
     private void FollowTarget()
     {
         if (detection && root.endPoint == null)
-            root.ActivateOnTarget(transform, true);
+            root.ActivateOnTarget(transform, !alwaysVisible);
 
         if (targetFollow)
         {
-            Vector3 destination = targetFollow.position + (transform.position - targetFollow.position).normalized * 3f;// + Random.insideUnitSphere * 1.5f;
+            Vector3 destination = targetFollow.position + (transform.position - targetFollow.position).normalized * 3f;
             transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * followSpeed);
             return;
         }
@@ -107,7 +121,10 @@ public class MovableRootTarget : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, startPosition, Time.deltaTime * followSpeed / 2);
         else
         {
-            root.Shrink();
+            if (alwaysVisible)
+                root.ActivateOnTarget(transform);
+            else
+                root.Shrink();
             detection = false;
         }
     }
@@ -149,7 +166,14 @@ public class MovableRootTarget : MonoBehaviour
 
     private void Idle()
     {
-        Vector3 destination = startPosition + Random.insideUnitSphere * 2f;
-        transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * followSpeed / 4f);
+        if (currentWanderTime > wanderFocusTime)
+        {
+            wanderDestination = startPosition + Random.insideUnitSphere * wanderRadius;
+            currentWanderTime = 0 - Random.Range(0, wanderFocusTime * 0.25f);
+        }
+        else
+            currentWanderTime += Time.deltaTime;
+
+        transform.position = Vector3.Lerp(transform.position, wanderDestination, Time.deltaTime * wanderSpeed);
     }
 }
