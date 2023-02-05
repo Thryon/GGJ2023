@@ -40,6 +40,9 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideLootAppeared, ShowHideLootAppeared);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateLootText, UpdateLootText);
 
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemHit, PlayGemHitAnim);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemDeath, ShowLoseScreen);
+
         player = ReferencesSingleton.Instance.player;
     }
 
@@ -60,6 +63,21 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideLootAppeared, ShowHideLootAppeared);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateLootText, UpdateLootText);
 
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemHit, PlayGemHitAnim);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemDeath, ShowLoseScreen);
+    }
+
+    Animator treelifeAnimator;
+    void PlayGemHitAnim()
+    {
+        if (treelifeAnimator == null)
+            treelifeAnimator = treeLife.GetComponentInParent<Animator>();
+
+        treelifeAnimator.SetTrigger("hit");
+    }
+
+    void ShowLoseScreen()
+    {
 
     }
 
