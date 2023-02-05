@@ -28,4 +28,9 @@ public class SpawnPoint : MonoBehaviour
         return _origin + new Vector3(offset.x, 0, offset.z);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, randomRadiusRange);
+    }
 }
