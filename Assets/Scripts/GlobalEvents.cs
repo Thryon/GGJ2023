@@ -17,6 +17,7 @@ public enum GlobalEventEnum
     OnWaterSourceEmpty,
     OnWaterSourceRefilled,
     OnGainSeed,
+    CameraShake,
     Size
 }
 
@@ -26,12 +27,14 @@ public class GlobalEvents : MonoBehaviour
 
     public delegate void EventBool(bool _param);
     public delegate void EventInt(int _param);
+    public delegate void EventFloat(float _param);
     public delegate void EventString(string _param);
     public delegate void EventComponent(Component _param);
     public delegate void EventParticle(Component _param, ParticleSystem.Particle particle, Vector3 position, Vector3 direction);
 
     EventBool[] BoolEvents = new EventBool[(int)GlobalEventEnum.Size];
     EventInt[] IntEvents = new EventInt[(int)GlobalEventEnum.Size];
+    EventFloat[] FloatEvents = new EventFloat[(int)GlobalEventEnum.Size];
     EventString[] StringEvents = new EventString[(int)GlobalEventEnum.Size];
 
     public event EventParticle OnParticleCollisionEnter;
@@ -65,6 +68,11 @@ public class GlobalEvents : MonoBehaviour
     {
         IntEvents[(int)_event] += _action;
     }
+    
+    public void RegisterEvent(GlobalEventEnum _event, EventFloat _action)
+    {
+        FloatEvents[(int)_event] += _action;
+    }
 
     public void RegisterEvent(GlobalEventEnum _event, EventString _action)
     {
@@ -90,6 +98,12 @@ public class GlobalEvents : MonoBehaviour
             IntEvents[(int)_event](_param);
     }
 
+    public void SendEvent(GlobalEventEnum _event, float _param)
+    {
+        if (FloatEvents[(int)_event] != null)
+            FloatEvents[(int)_event](_param);
+    }
+
     public void SendEvent(GlobalEventEnum _event, string _param)
     {
         if (StringEvents[(int)_event] != null)
@@ -109,6 +123,11 @@ public class GlobalEvents : MonoBehaviour
     public void UnregisterEvent(GlobalEventEnum _event, EventInt _action)
     {
         IntEvents[(int)_event] -= _action;
+    }
+
+    public void UnregisterEvent(GlobalEventEnum _event, EventFloat _action)
+    {
+        FloatEvents[(int)_event] -= _action;
     }
 
     public void UnregisterEvent(GlobalEventEnum _event, EventString _action)

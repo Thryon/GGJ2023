@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &729638010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729638011}
+  m_Layer: 6
+  m_Name: Shaker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729638011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729638010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6367701458076475186}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1376901276
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,7 +6247,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6059
+  m_VersionIndex: 6021
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9038,7 +9069,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4686
+  m_VersionIndex: 4734
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -10921,7 +10952,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4097
+  m_VersionIndex: 4145
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13187,7 +13218,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4829
+  m_VersionIndex: 4877
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -18310,6 +18341,7 @@ GameObject:
   - component: {fileID: 6367701458076475187}
   - component: {fileID: 403585906}
   - component: {fileID: 7027446391628218385}
+  - component: {fileID: 1262982046}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -18331,8 +18363,9 @@ Transform:
   m_Children:
   - {fileID: 6367701458669425464}
   - {fileID: 6367701458715010185}
+  - {fileID: 729638011}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6367701458076475187
 MonoBehaviour:
@@ -18383,6 +18416,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Seeds: 0
   seedCounterText: {fileID: 0}
+--- !u!114 &1262982046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458076475180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe3e6c82a612494f94852aab1e1c69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunPower: 0
+  MinGunPowerStartSpeedValue: 0
+  MaxGunPowerStartSpeedValue: 0
+  MinGunPowerCollisionPowerValue: 0
+  MaxGunPowerCollisionPowerValue: 0
+  MaxGunPowerLevel: 0
+  GunWidth: 0
+  MinGunWidthRealValue: 0
+  MaxGunWidthRealValue: 0
+  MaxGunWidthLevel: 0
+  gunParticleSystem: {fileID: 0}
 --- !u!1 &6367701458101605078
 GameObject:
   m_ObjectHideFlags: 0
@@ -18549,7 +18605,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 75
   orthographic: 0
@@ -18597,6 +18653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811c28be76f400448a5be9486f2f1770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shaker: {fileID: 6367701458101605079}
   Camera: {fileID: 6367701458669425461}
   FollowPointFraming: {x: 0, y: 0}
   FollowingSharpness: 1e+9
@@ -30206,7 +30263,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2695
+  m_VersionIndex: 2743
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -32389,7 +32446,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3447
+  m_VersionIndex: 3495
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

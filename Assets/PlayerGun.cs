@@ -43,6 +43,7 @@ public class PlayerGun : MonoBehaviour
                 }
                 else
                 {
+                    GlobalEvents.Instance.SendEvent(GlobalEventEnum.CameraShake, 0.06f);
                     particles.Emit(1);
                 }
                 timer -= emitInterval;

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace KinematicCharacterController
 {
     public class CharacterCamera : MonoBehaviour
     {
+        public Transform shaker;
         [Header("Framing")]
         public Camera Camera;
         public Vector2 FollowPointFraming = new Vector2(0f, 0f);
@@ -71,6 +73,16 @@ namespace KinematicCharacterController
             _targetVerticalAngle = 0f;
 
             PlanarDirection = Vector3.forward;
+        }
+
+        private void Start()
+        {
+            GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.CameraShake, (GlobalEvents.EventFloat)DoCameraShake);
+        }
+
+        private void DoCameraShake(float duration)
+        {
+            shaker.DOShakePosition(duration, 0.005f, 10, 50f);
         }
 
         // Set the transform that the camera will orbit around
@@ -172,7 +184,7 @@ namespace KinematicCharacterController
                 targetPosition += Transform.up * FollowPointFraming.y;
 
                 // Apply position
-                Transform.position = targetPosition;
+                Transform.position = targetPosition + shaker.localPosition;
             }
         }
     }
