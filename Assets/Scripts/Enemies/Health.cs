@@ -14,6 +14,13 @@ public class Health : MonoBehaviour
 
     bool pendingKill = false;
 
+    public int CurrentHealth => currentHealth;
+
+    public bool IsDead()
+    {
+        return currentHealth <= 0;
+    }
+
     private void Start()
     {
         MaxHealth = (int)(WavesSystem.GetHealthMultiplier() * MaxHealth);
@@ -23,9 +30,9 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int _damage)
     {
-        currentHealth -= _damage;
+        currentHealth = CurrentHealth - _damage;
         OnTakeDamageEvent?.Invoke();
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
             Kill();
     }
 
@@ -51,8 +58,8 @@ public class Health : MonoBehaviour
 
     public void GainHealth(int _gain)
     {
-        currentHealth += _gain;
-        if (currentHealth > MaxHealth)
+        currentHealth = CurrentHealth + _gain;
+        if (CurrentHealth > MaxHealth)
             currentHealth = MaxHealth;
     }
 
