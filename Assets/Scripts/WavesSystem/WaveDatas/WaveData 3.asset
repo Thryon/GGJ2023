@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDatas:
   - enemyType: 0
-    quantity: 10
+    quantity: 20
     delay: 5
   - enemyType: 2
-    quantity: 3
+    quantity: 6
     delay: 2

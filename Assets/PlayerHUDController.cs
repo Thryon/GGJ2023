@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using KinematicCharacterController;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerHUDController : MonoBehaviour
@@ -236,5 +237,10 @@ public class PlayerHUDController : MonoBehaviour
     void UpdateLosePanel(int _currentWave)
     {
         currentWave.SetText("Current wave: " + _currentWave);
+    }
+
+    public void ReloadMap()
+    {
+        SceneManager.LoadScene(0);
     }
 }
