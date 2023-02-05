@@ -18815,6 +18815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6367701458861183577}
   - component: {fileID: 6367701458861183582}
+  - component: {fileID: 7568954495872064547}
   m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
@@ -18855,6 +18856,20 @@ MonoBehaviour:
   particles: {fileID: 6367701458916561527}
   waterReservoir: {fileID: 403585906}
   emitInterval: 0.02
+--- !u!114 &7568954495872064547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367701458861183576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a246d01210b505646b827e5b9c5956f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 8
+  multiplier: 2
 --- !u!1 &6367701458916561520
 GameObject:
   m_ObjectHideFlags: 0
