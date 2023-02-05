@@ -21,6 +21,8 @@ public enum GlobalEventEnum
     OnGemHit,
     OnGemDeath,
     BigCameraShake,
+    OpenUpgradeMenu,
+    CloseUpgradeMenu,
     Size
 }
 

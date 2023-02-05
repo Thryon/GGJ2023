@@ -13,6 +13,7 @@ namespace KinematicCharacterController
         public CharacterCamera CharacterCamera;
         public WaterReservoir WaterReservoir;
         public Inventory Inventory;
+        public PlayerUpgrader PlayerUpgrader;
 
         [SerializeField] private float fireRate = 100f;
 
@@ -52,7 +53,8 @@ namespace KinematicCharacterController
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                if(!isUpgradeMenuOpen)
+                    Cursor.lockState = CursorLockMode.Locked;
             }
 
             if (inWaterZone)
@@ -98,8 +100,33 @@ namespace KinematicCharacterController
                     }
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if(isUpgradeMenuOpen)
+                    CloseUpgradeMenu();
+                else
+                    OpenUpgradeMenu();
+            }
             
             HandleCharacterInput();
+        }
+
+        private bool isUpgradeMenuOpen = false;
+        void OpenUpgradeMenu()
+        {
+            Time.timeScale = 0.2f;
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.OpenUpgradeMenu);
+            Cursor.lockState = CursorLockMode.None;
+            isUpgradeMenuOpen = true;
+        }
+
+        void CloseUpgradeMenu()
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.CloseUpgradeMenu);
+            isUpgradeMenuOpen = false;
         }
 
         private void FixedUpdate()

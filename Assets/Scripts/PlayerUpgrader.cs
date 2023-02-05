@@ -17,6 +17,8 @@ public class PlayerUpgrader : MonoBehaviour
     public bool levelDownPower;
     public int GunPowerLevel;
     public int MaxGunPowerLevel;
+    public int MinGunPowerPrice;
+    public int MaxGunPowerPrice;
     public float MinGunPowerStartSpeedValue;
     public float MaxGunPowerStartSpeedValue;
     public float MinGunPowerCollisionPowerValue;
@@ -27,6 +29,8 @@ public class PlayerUpgrader : MonoBehaviour
     public bool levelDownWidth;
     public int GunWidthLevel;
     public int MaxGunWidthLevel;
+    public int MinGunWidthPrice;
+    public int MaxGunWidthPrice;
     public float MinGunWidthRealValue;
     public float MaxGunWidthRealValue;
     [Space]
@@ -35,6 +39,8 @@ public class PlayerUpgrader : MonoBehaviour
     public bool levelDownCapacity;
     public int GunCapacityLevel;
     public int MaxGunCapacityLevel;
+    public int MinGunCapacityPrice;
+    public int MaxGunCapacityPrice;
     public int MinGunCapacityRealValue;
     public int MaxGunCapacityRealValue;
     [Space]
@@ -43,6 +49,8 @@ public class PlayerUpgrader : MonoBehaviour
     public bool levelDownFireRate;
     public int GunFireRateLevel;
     public int MaxGunFireRateLevel;
+    public int MinGunFireRatePrice;
+    public int MaxGunFireRatePrice;
     public int MinGunFireRateRealValue;
     public int MaxGunFireRateRealValue;
     
@@ -106,6 +114,30 @@ public class PlayerUpgrader : MonoBehaviour
             levelDownFireRate = false;
         }
         
+    }
+
+    public int GetNextPowerLevelPrice()
+    {
+        float t = (GunPowerLevel / (float)MaxGunPowerLevel);
+        return (int)Mathf.Lerp(MinGunPowerPrice, MaxGunPowerPrice, t);
+    }
+    
+    public int GetNextWidthLevelPrice()
+    {
+        float t = (GunWidthLevel / (float)MaxGunWidthLevel);
+        return (int)Mathf.Lerp(MinGunWidthPrice, MaxGunWidthPrice, t);
+    }
+    
+    public int GetNextCapacityLevelPrice()
+    {
+        float t = (GunCapacityLevel / (float)MaxGunCapacityLevel);
+        return (int)Mathf.Lerp(MinGunCapacityPrice, MaxGunCapacityPrice, t);
+    }
+    
+    public int GetNextFireRateLevelPrice()
+    {
+        float t = (GunFireRateLevel / (float)MaxGunFireRateLevel);
+        return (int)Mathf.Lerp(MinGunFireRatePrice, MaxGunFireRatePrice, t);
     }
 
     public void UpgradePower(int upgradeCost)

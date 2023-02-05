@@ -18383,6 +18383,7 @@ MonoBehaviour:
   CharacterCamera: {fileID: 6367701458669425465}
   WaterReservoir: {fileID: 403585906}
   Inventory: {fileID: 7027446391628218385}
+  PlayerUpgrader: {fileID: 1262982046}
   fireRate: 100
 --- !u!114 &403585906
 MonoBehaviour:
@@ -18432,6 +18433,8 @@ MonoBehaviour:
   levelDownPower: 0
   GunPowerLevel: 0
   MaxGunPowerLevel: 10
+  MinGunPowerPrice: 5
+  MaxGunPowerPrice: 50
   MinGunPowerStartSpeedValue: 15
   MaxGunPowerStartSpeedValue: 34
   MinGunPowerCollisionPowerValue: 500
@@ -18440,20 +18443,26 @@ MonoBehaviour:
   levelDownWidth: 0
   GunWidthLevel: 0
   MaxGunWidthLevel: 10
+  MinGunWidthPrice: 5
+  MaxGunWidthPrice: 50
   MinGunWidthRealValue: 0.03
   MaxGunWidthRealValue: 0.1
   levelUpCapacity: 0
   levelDownCapacity: 0
   GunCapacityLevel: 0
   MaxGunCapacityLevel: 10
+  MinGunCapacityPrice: 5
+  MaxGunCapacityPrice: 50
   MinGunCapacityRealValue: 200
   MaxGunCapacityRealValue: 600
   levelUpFireRate: 0
   levelDownFireRate: 0
   GunFireRateLevel: 0
   MaxGunFireRateLevel: 10
-  MinGunFireRateRealValue: 100
-  MaxGunFireRateRealValue: 50
+  MinGunFireRatePrice: 5
+  MaxGunFireRatePrice: 50
+  MinGunFireRateRealValue: 20
+  MaxGunFireRateRealValue: 100
   gunParticleSystem: {fileID: 6367701458916561527}
 --- !u!1 &6367701458101605078
 GameObject:
