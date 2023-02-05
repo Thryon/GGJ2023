@@ -18,6 +18,8 @@ public class PlayerHUDController : MonoBehaviour
 
     [SerializeField] private TMP_Text nextWaveInTxt;
     [SerializeField] private TMP_Text needRefillTxt;
+    [SerializeField] private TMP_Text lootAppeared;
+
 
     IEnumerator Start()
     {
@@ -35,6 +37,8 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideRefillText, ShowHideRefill);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideLootAppeared, ShowHideLootAppeared);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateLootText, UpdateLootText);
 
         player = ReferencesSingleton.Instance.player;
     }
@@ -52,6 +56,11 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideRefillText, ShowHideRefill);
+
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideLootAppeared, ShowHideLootAppeared);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateLootText, UpdateLootText);
+
+
     }
 
     private void OnWaterSourceEmpty()
@@ -161,5 +170,37 @@ public class PlayerHUDController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         ShowHideRefill(false);
         showRefillCoroutine = null;
+    }
+
+    private void ShowHideLootAppeared(bool _show)
+    {
+        if (lootAppeared == null)
+            return;
+
+        lootAppeared.gameObject.SetActive(_show);
+
+        if (_show)
+        {
+            if (lootAppearedCoroutine != null)
+                StopCoroutine(lootAppearedCoroutine);
+
+            lootAppearedCoroutine = StartCoroutine(ShowLootText());
+        }
+    }
+
+    Coroutine lootAppearedCoroutine = null;
+    IEnumerator ShowLootText()
+    {
+        yield return new WaitForSeconds(3.0f);
+        ShowHideLootAppeared(false);
+        lootAppearedCoroutine = null;
+    }
+
+    void UpdateLootText(string _text)
+    {
+        if (lootAppeared == null)
+            return;
+
+        lootAppeared.SetText(_text);
     }
 }

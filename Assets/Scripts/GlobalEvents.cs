@@ -29,6 +29,8 @@ public enum GlobalEventEnum
     HideNextWaveTimer,
     UpdateNextWaveTimer,
     ShowHideRefillText,
+    ShowHideLootAppeared,
+    UpdateLootText,
     Size
 }
 

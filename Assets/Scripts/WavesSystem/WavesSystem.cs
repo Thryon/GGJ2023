@@ -51,6 +51,13 @@ public class WavesSystem : MonoBehaviour
         {
             for (int i = 0; i < waves.Count; i++)
             {
+                if (i == waves.Count - 2)
+                {
+                    GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateLootText, "Congrats! Here's some seeds' mage as a reward, then difficulty goes up!");
+                    GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideLootAppeared, true);
+                    yield return new WaitForSeconds(3.0f);
+                }
+
                 GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideNextWaveTimer, false);
 
                 currentSpawnCoroutine = StartCoroutine(SpawnWave(waves[i]));
@@ -104,6 +111,15 @@ public class WavesSystem : MonoBehaviour
 
                     SpawnPoints[currentSpawnPoint].Spawn((int)(spawnData.quantity * GetQtyMultiplier()), prefabs[(int)spawnData.enemyType]);
                     currentSpawnPoint = (currentSpawnPoint + 1) % SpawnPoints.Length;
+
+                    if (spawnData.enemyType == EnemyType.Treasure)
+                    {
+                        if (spawnData.quantity == 1)
+                            GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateLootText, "A mage with lot of seeds appeared in the forest!");
+                        else
+                            GlobalEvents.Instance.SendEvent(GlobalEventEnum.UpdateLootText, "Several mages with lot of seeds appeared in the forest!");
+                        GlobalEvents.Instance.SendEvent(GlobalEventEnum.ShowHideLootAppeared, true);
+                    }
 
                     yield return new WaitForSeconds(spawnData.delay);
                 }
