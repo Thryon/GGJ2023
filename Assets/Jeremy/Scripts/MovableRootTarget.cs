@@ -149,7 +149,7 @@ public class MovableRootTarget : MonoBehaviour
 
     private void Idle()
     {
-        Vector3 destination = root.transform.position + Vector3.up * 4f + Random.insideUnitSphere * 2f;
+        Vector3 destination = startPosition + Random.insideUnitSphere * 2f;
         transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * followSpeed / 4f);
     }
 }

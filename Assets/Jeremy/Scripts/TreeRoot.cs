@@ -32,6 +32,8 @@ public class TreeRoot : MonoBehaviour
     public float persistence = 1.0f;
     // Seed for the noise
     public int seed = 0;
+    //
+    public bool randomSeed = true;
 
     [Space]
     public AnimationCurve heightOffset;
@@ -107,7 +109,8 @@ public class TreeRoot : MonoBehaviour
     private void Start()
     {
         lineRenderer.useWorldSpace = true;
-        seed = Random.Range(0, 9999);
+        if (randomSeed)
+            seed = Random.Range(0, 9999);
         widthKeys = lineRenderer.widthCurve.keys;
     }
 
