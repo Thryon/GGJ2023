@@ -24,4 +24,9 @@ public class UpgradeMenu : MonoBehaviour
         container.SetActive(true);
         GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnUpgradeMenuOpened);
     }
+
+    public void OnUpgradePowerClicked()
+    {
+        ReferencesSingleton.Instance.player.PlayerUpgrader.UpgradePower();
+    }
 }

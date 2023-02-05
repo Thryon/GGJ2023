@@ -1416,6 +1416,8 @@ MonoBehaviour:
   pressToRefillText: {fileID: 5165956596877682176}
   emptySourceText: {fileID: 5165956598577608392}
   treeLife: {fileID: 1317711544153056760}
+  nextWaveInTxt: {fileID: 0}
+  needRefillTxt: {fileID: 0}
 --- !u!1 &5913509785932086831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,10 +1732,22 @@ PrefabInstance:
     - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2071580362}
+      objectReference: {fileID: 2071580364}
     - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnUpgradePowerClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UpgradeMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153174903210659856, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3153174903210659858, guid: 65476dc0fbf396044ab2b36fa60b69b5, type: 3}
       propertyPath: m_Pivot.x
