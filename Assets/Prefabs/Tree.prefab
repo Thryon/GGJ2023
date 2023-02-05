@@ -1327,7 +1327,7 @@ Transform:
   - {fileID: 5669773380242575693}
   - {fileID: 5669773378553970731}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5669773378468442169
 GameObject:
@@ -3436,6 +3436,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5669773378739469582}
+  - component: {fileID: 8700082812636071017}
+  - component: {fileID: 7040718423202113131}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -3460,6 +3462,62 @@ Transform:
   m_Father: {fileID: 5669773380107483073}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8700082812636071017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669773378739469569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfbbaad42e17e04ca752aca81030988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7040718423202113131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669773378739469569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4e94d5c38897d4db14e2d2f89b6deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1
+  delayDestroyOnDeath: 0.25
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8700082812636071017}
+        m_TargetAssemblyTypeName: Gem, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8700082812636071017}
+        m_TargetAssemblyTypeName: Gem, Assembly-CSharp
+        m_MethodName: OnHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5669773378783572772
 GameObject:
   m_ObjectHideFlags: 0
