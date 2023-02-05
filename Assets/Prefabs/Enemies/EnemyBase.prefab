@@ -306,7 +306,7 @@ Transform:
   - {fileID: 1859409874336323479}
   - {fileID: 1883629355}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 8.515, z: 0}
 --- !u!114 &3428531769366981350
 MonoBehaviour:
@@ -352,7 +352,7 @@ MonoBehaviour:
   radius: 1
   height: 2
   canMove: 1
-  maxSpeed: 5
+  maxSpeed: 2
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -434,7 +434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f1da68b1ded3a47beb2f716e424d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayStartMovingOnSpawn: 1
+  damagePerHit: 1
+  waterStolenByHit: 10
+  delayBetweenAnimAndHit: 0.5
   AttackInterval: 3
+  currentDebugState: 0
 --- !u!114 &7574200356432823854
 MonoBehaviour:
   m_ObjectHideFlags: 0

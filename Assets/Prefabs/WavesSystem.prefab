@@ -52,7 +52,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 3428531769366981254, guid: bc7b03b9ed92b894a84c369f249d99b6, type: 3}
   - {fileID: 3428531769366981254, guid: ae19ca3025ab81144aa57fc26d4abb5e, type: 3}
-  - {fileID: 0}
+  - {fileID: 3428531769366981254, guid: 8a2e2619fe3d8c44e91890eeae1a7752, type: 3}
   waves:
   - {fileID: 11400000, guid: 7bc22e440a8ea5445ac3903770ac2aa1, type: 2}
   - {fileID: 11400000, guid: 0b67c758313be2f4ebb9cdfd013ffc4d, type: 2}
