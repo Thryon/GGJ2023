@@ -10,12 +10,6 @@ public class Gem : MonoBehaviour
         GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGemHit, health.MaxHealth);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-            health.TakeDamage(1);
-    }
-
     public void OnDeath()
     {
         GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGemDeath);

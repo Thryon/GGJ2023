@@ -353,7 +353,7 @@ MonoBehaviour:
   radius: 1
   height: 2
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 3
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayStartMovingOnSpawn: 1
-  damagePerHit: 1
+  damagePerHit: 10
   waterStolenByHit: 10
   delayBetweenAnimAndHit: 0.5
   dontMove: 0

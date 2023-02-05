@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using KinematicCharacterController;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerHUDController : MonoBehaviour
@@ -18,6 +19,10 @@ public class PlayerHUDController : MonoBehaviour
 
     [SerializeField] private TMP_Text nextWaveInTxt;
     [SerializeField] private TMP_Text needRefillTxt;
+    [SerializeField] private TMP_Text lootAppeared;
+
+    public GameObject losePanel;
+    public TMP_Text currentWave;
 
     IEnumerator Start()
     {
@@ -35,12 +40,22 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
         GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideRefillText, ShowHideRefill);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.ShowHideLootAppeared, ShowHideLootAppeared);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateLootText, UpdateLootText);
+
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemHit, PlayGemHitAnim);
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnGemDeath, ShowLoseScreen);
+        
+        GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.UpdateLosePanel, UpdateLosePanel);
 
         player = ReferencesSingleton.Instance.player;
     }
 
     private void OnDestroy()
     {
+        if (GlobalEvents.Instance == null)
+            return;
+
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnEnterInteractWithWaterZone, OnEnterWaterZone);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnExitInteractWithWaterZone, OnExitWaterZone);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGainWater, OnGainWater);
@@ -52,6 +67,33 @@ public class PlayerHUDController : MonoBehaviour
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideNextWaveTimer, ShowHideNextWaveTimer);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateNextWaveTimer, UpdateNextWaveTimer);
         GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideRefillText, ShowHideRefill);
+
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.ShowHideLootAppeared, ShowHideLootAppeared);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateLootText, UpdateLootText);
+
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemHit, PlayGemHitAnim);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGemDeath, ShowLoseScreen);
+        GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.UpdateLosePanel, UpdateLosePanel);
+
+    }
+
+    Animator treelifeAnimator;
+    void PlayGemHitAnim(int amount)
+    {
+        if (treelifeAnimator == null)
+            treelifeAnimator = treeLife.GetComponentInParent<Animator>();
+
+        treelifeAnimator.SetTrigger("hit");
+    }
+
+    void ShowLoseScreen()
+    {
+        losePanel.SetActive(true);
+
+        // stop player
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnWaterSourceEmpty()
@@ -161,5 +203,47 @@ public class PlayerHUDController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         ShowHideRefill(false);
         showRefillCoroutine = null;
+    }
+
+    private void ShowHideLootAppeared(bool _show)
+    {
+        if (lootAppeared == null)
+            return;
+
+        lootAppeared.gameObject.SetActive(_show);
+
+        if (_show)
+        {
+            if (lootAppearedCoroutine != null)
+                StopCoroutine(lootAppearedCoroutine);
+
+            lootAppearedCoroutine = StartCoroutine(ShowLootText());
+        }
+    }
+
+    Coroutine lootAppearedCoroutine = null;
+    IEnumerator ShowLootText()
+    {
+        yield return new WaitForSeconds(3.0f);
+        ShowHideLootAppeared(false);
+        lootAppearedCoroutine = null;
+    }
+
+    void UpdateLootText(string _text)
+    {
+        if (lootAppeared == null)
+            return;
+
+        lootAppeared.SetText(_text);
+    }
+
+    void UpdateLosePanel(int _currentWave)
+    {
+        currentWave.SetText("Current wave: " + _currentWave);
+    }
+
+    public void ReloadMap()
+    {
+        SceneManager.LoadScene(0);
     }
 }

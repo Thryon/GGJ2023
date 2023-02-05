@@ -48,7 +48,7 @@ MonoBehaviour:
   behavior: 0
   detectionLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   targetCamera: 0
   detectionRadius: 10
   followSpeed: 1.5
@@ -87,7 +87,7 @@ Transform:
   - {fileID: 6485302848147926951}
   - {fileID: 3105698142136046401}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6485302848108431604
 PrefabInstance:

@@ -49,11 +49,17 @@ namespace KinematicCharacterController
         private void OnUpgradeMenuClosed()
         {
             isUpgradeMenuOpen = false;
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         private void OnUpgradeMenuOpened()
         {
             isUpgradeMenuOpen = true;
+            Time.timeScale = 0.02f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         private void OnDestroy()
@@ -130,25 +136,21 @@ namespace KinematicCharacterController
         private bool isUpgradeMenuOpen = false;
         void OpenUpgradeMenu()
         {
-            Time.timeScale = 0.2f;
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.OpenUpgradeMenu);
-            Cursor.lockState = CursorLockMode.None;
         }
 
         void CloseUpgradeMenu()
         {
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
             GlobalEvents.Instance.SendEvent(GlobalEventEnum.CloseUpgradeMenu);
         }
 
-        private void FixedUpdate()
-        {
-            if (Input.GetMouseButton(1))
-            {
-                WaterReservoir.RefillWater(5);
-            }
-        }
+        // private void FixedUpdate()
+        // {
+        //     if (Input.GetMouseButton(1))
+        //     {
+        //         WaterReservoir.RefillWater(5);
+        //     }
+        // }
 
         private void LateUpdate()
         {

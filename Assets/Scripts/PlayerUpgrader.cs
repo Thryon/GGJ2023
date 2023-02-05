@@ -12,6 +12,13 @@ public class PlayerUpgrader : MonoBehaviour
         set => ReferencesSingleton.Instance.player.Inventory.Seeds = value;
     }
 
+    public enum UpgradeType
+    {
+        Power,
+        Capacity,
+        FireRate
+    }
+
     [Header("Power")]
     public bool levelUpPower;
     public bool levelDownPower;
@@ -92,7 +99,7 @@ public class PlayerUpgrader : MonoBehaviour
         
         if (levelUpCapacity)
         {
-            UpgradeCapacity(1);
+            UpgradeCapacity();
             levelUpCapacity = false;
         }
 
@@ -104,7 +111,7 @@ public class PlayerUpgrader : MonoBehaviour
         
         if (levelUpFireRate)
         {
-            UpgradeFireRate(1);
+            UpgradeFireRate();
             levelUpFireRate = false;
         }
 
@@ -114,6 +121,39 @@ public class PlayerUpgrader : MonoBehaviour
             levelDownFireRate = false;
         }
         
+    }
+
+    public int GetNextLevelPrice(UpgradeType type)
+    {
+        switch (type)
+        {
+            case UpgradeType.Power:
+                return GetNextPowerLevelPrice();
+            case UpgradeType.Capacity:
+                return GetNextCapacityLevelPrice();
+            case UpgradeType.FireRate:
+                return GetNextFireRateLevelPrice();
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+    }
+
+    public void Upgrade(UpgradeType type)
+    {
+        switch (type)
+        {
+            case UpgradeType.Power:
+                UpgradePower();
+                break;
+            case UpgradeType.Capacity:
+                UpgradeCapacity();
+                break;
+            case UpgradeType.FireRate:
+                UpgradeFireRate();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
     }
 
     public int GetNextPowerLevelPrice()
@@ -154,17 +194,17 @@ public class PlayerUpgrader : MonoBehaviour
         RefreshGunCleave();
     }
     
-    public void UpgradeCapacity(int upgradeCost)
+    public void UpgradeCapacity()
     {
         GunCapacityLevel++;
-        ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(upgradeCost);
+        ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(GetNextCapacityLevelPrice());
         RefreshGunCapacity();
     }
     
-    public void UpgradeFireRate(int upgradeCost)
+    public void UpgradeFireRate()
     {
         GunFireRateLevel++;
-        ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(upgradeCost);
+        ReferencesSingleton.Instance.player.Inventory.RemoveSeeds(GetNextFireRateLevelPrice());
         RefreshGunFireRate();
     }
 
@@ -196,5 +236,33 @@ public class PlayerUpgrader : MonoBehaviour
         float t = (GunFireRateLevel / (float)MaxGunFireRateLevel);
         float fireRate = Mathf.Lerp(MinGunFireRateRealValue, MaxGunFireRateRealValue, t);;
         ReferencesSingleton.Instance.player.PlayerGun.SetFireRate(fireRate);
+    }
+
+    public int GetLevel(UpgradeType type)
+    {
+        switch (type)
+        {
+            case UpgradeType.Power:
+                return GunPowerLevel;
+            case UpgradeType.Capacity:
+                return GunCapacityLevel;
+            case UpgradeType.FireRate:
+                return GunFireRateLevel;
+        }
+        return -1;
+    }
+
+    public int GetMaxLevel(UpgradeType type)
+    {
+        switch (type)
+        {
+            case UpgradeType.Power:
+                return MaxGunPowerLevel;
+            case UpgradeType.Capacity:
+                return MaxGunCapacityLevel;
+            case UpgradeType.FireRate:
+                return MaxGunFireRateLevel;
+        }
+        return -1;
     }
 }

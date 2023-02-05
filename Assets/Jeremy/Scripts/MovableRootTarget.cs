@@ -176,4 +176,10 @@ public class MovableRootTarget : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, wanderDestination, Time.deltaTime * wanderSpeed);
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
 }
