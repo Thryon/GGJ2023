@@ -9,6 +9,7 @@ public class EnemyGameplayBehavior : MonoBehaviour
     public int damagePerHit = 1;
     public int waterStolenByHit = 10;
     public float delayBetweenAnimAndHit = 0.5f;
+    public bool dontMove = false;
 
     public class EnemyStateMachine : StateMachine
     {
@@ -50,7 +51,7 @@ public class EnemyGameplayBehavior : MonoBehaviour
 
         yield return new WaitForSeconds(delayStartMovingOnSpawn);
 
-        if (ReferencesSingleton.Instance != null)
+        if (ReferencesSingleton.Instance != null && !dontMove)
             destinationSetter.target = ReferencesSingleton.Instance.treeRef.transform;
     }
 

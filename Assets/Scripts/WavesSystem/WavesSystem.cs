@@ -94,7 +94,7 @@ public class WavesSystem : MonoBehaviour
     {
         if (_waveToSpawn != null)
         {
-            currentSpawnPoint = 0;
+            currentSpawnPoint = (currentSpawnPoint + 1) % SpawnPoints.Length;
             if (useDelaysInWavesData)
             {
                 foreach (var spawnData in _waveToSpawn.spawnDatas)

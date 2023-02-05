@@ -11,11 +11,12 @@ namespace KinematicCharacterController
     {
         public CharacterController Character;
         public CharacterCamera CharacterCamera;
+        public PlayerGun PlayerGun;
         public WaterReservoir WaterReservoir;
         public Inventory Inventory;
         public PlayerUpgrader PlayerUpgrader;
 
-        [SerializeField] private float fireRate = 100f;
+        [SerializeField] private float waterRefillRate = 100f;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -92,7 +93,7 @@ namespace KinematicCharacterController
             if(isRefilling)
             {
                 waterRefillTimer += Time.deltaTime;
-                float fireRateInterval = fireRate * 100f;
+                float fireRateInterval = 1f/waterRefillRate;
                 while (waterRefillTimer >= fireRateInterval)
                 {
                     Debug.Log(CurrentWaterSource.currentAmount);
@@ -218,11 +219,6 @@ namespace KinematicCharacterController
         {
             currentWaterSource = null;
             inWaterZone = false;
-        }
-
-        public void SetFireRate(float f)
-        {
-            fireRate = f;
         }
     }
 }

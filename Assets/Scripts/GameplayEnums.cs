@@ -4,7 +4,8 @@ public enum EnemyType
 {
     Simple,
     Tank,
-    Thief
+    Thief,
+    Treasure
 }
 
 public enum LootType

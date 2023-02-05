@@ -6247,7 +6247,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6051
+  m_VersionIndex: 6027
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9069,7 +9069,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4764
+  m_VersionIndex: 4740
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -10952,7 +10952,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4175
+  m_VersionIndex: 4151
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13218,7 +13218,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4907
+  m_VersionIndex: 4883
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -18365,7 +18365,7 @@ Transform:
   - {fileID: 6367701458715010185}
   - {fileID: 729638011}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6367701458076475187
 MonoBehaviour:
@@ -18381,10 +18381,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Character: {fileID: 6367701458715010189}
   CharacterCamera: {fileID: 6367701458669425465}
+  PlayerGun: {fileID: 6367701458861183582}
   WaterReservoir: {fileID: 403585906}
   Inventory: {fileID: 7027446391628218385}
   PlayerUpgrader: {fileID: 1262982046}
-  fireRate: 100
+  waterRefillRate: 150
 --- !u!114 &403585906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18433,8 +18434,8 @@ MonoBehaviour:
   levelDownPower: 0
   GunPowerLevel: 0
   MaxGunPowerLevel: 10
-  MinGunPowerPrice: 5
-  MaxGunPowerPrice: 50
+  MinGunPowerPrice: 10
+  MaxGunPowerPrice: 100
   MinGunPowerStartSpeedValue: 15
   MaxGunPowerStartSpeedValue: 34
   MinGunPowerCollisionPowerValue: 500
@@ -18443,24 +18444,24 @@ MonoBehaviour:
   levelDownWidth: 0
   GunWidthLevel: 0
   MaxGunWidthLevel: 10
-  MinGunWidthPrice: 5
-  MaxGunWidthPrice: 50
+  MinGunWidthPrice: 10
+  MaxGunWidthPrice: 100
   MinGunWidthRealValue: 0.03
   MaxGunWidthRealValue: 0.1
   levelUpCapacity: 0
   levelDownCapacity: 0
   GunCapacityLevel: 0
   MaxGunCapacityLevel: 10
-  MinGunCapacityPrice: 5
-  MaxGunCapacityPrice: 50
-  MinGunCapacityRealValue: 200
-  MaxGunCapacityRealValue: 600
+  MinGunCapacityPrice: 10
+  MaxGunCapacityPrice: 100
+  MinGunCapacityRealValue: 400
+  MaxGunCapacityRealValue: 1000
   levelUpFireRate: 0
   levelDownFireRate: 0
   GunFireRateLevel: 0
   MaxGunFireRateLevel: 10
-  MinGunFireRatePrice: 5
-  MaxGunFireRatePrice: 50
+  MinGunFireRatePrice: 10
+  MaxGunFireRatePrice: 100
   MinGunFireRateRealValue: 20
   MaxGunFireRateRealValue: 100
   gunParticleSystem: {fileID: 6367701458916561527}
@@ -18937,7 +18938,7 @@ MonoBehaviour:
   shootOrigin: {fileID: 6367701458063855917}
   particles: {fileID: 6367701458916561527}
   waterReservoir: {fileID: 403585906}
-  emitInterval: 0.02
+  fireRate: 100
 --- !u!114 &7568954495872064547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30288,7 +30289,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2773
+  m_VersionIndex: 2749
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -32471,7 +32472,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3525
+  m_VersionIndex: 3501
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

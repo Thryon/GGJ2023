@@ -10,9 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 327c545bcaca0c84ea57685c8899235b, type: 3}
-  m_Name: WaveData 1
+  m_Name: WaveData 14
   m_EditorClassIdentifier: 
   spawnDatas:
+  - enemyType: 2
+    quantity: 10
+    delay: 0
+  - enemyType: 1
+    quantity: 5
+    delay: 2
   - enemyType: 0
     quantity: 10
     delay: 2
+  - enemyType: 3
+    quantity: 1
+    delay: 10
+  - enemyType: 0
+    quantity: 20
+    delay: 10

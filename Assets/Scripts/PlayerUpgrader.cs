@@ -195,6 +195,6 @@ public class PlayerUpgrader : MonoBehaviour
     {
         float t = (GunFireRateLevel / (float)MaxGunFireRateLevel);
         float fireRate = Mathf.Lerp(MinGunFireRateRealValue, MaxGunFireRateRealValue, t);;
-        ReferencesSingleton.Instance.player.SetFireRate(fireRate);
+        ReferencesSingleton.Instance.player.PlayerGun.SetFireRate(fireRate);
     }
 }
