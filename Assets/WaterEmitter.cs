@@ -29,6 +29,8 @@ public class WaterEmitter : MonoBehaviour
             {
                 Component comp = insideColliderData.GetCollider(i, j);
                 var particle = insideParticles[i];
+                if(particle.remainingLifetime == 0f)
+                    continue;
                 particle.remainingLifetime = 0f;
                 insideParticles[i] = particle;
                 Collider col = (Collider)comp;
@@ -46,6 +48,8 @@ public class WaterEmitter : MonoBehaviour
             {
                 Component comp = enterColliderData.GetCollider(i, j);
                 var particle = enterParticles[i];
+                if(particle.remainingLifetime == 0f)
+                    continue;
                 particle.remainingLifetime = 0f;
                 enterParticles[i] = particle;
                 Collider col = (Collider)comp;

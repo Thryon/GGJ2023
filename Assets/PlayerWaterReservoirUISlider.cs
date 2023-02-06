@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,5 +28,14 @@ public class PlayerWaterReservoirUISlider : MonoBehaviour
     void RefreshSliderValue()
     {
         waterSlider.value = (float)waterReservoir.Amount / waterReservoir.MaxAmount;
+    }
+
+    private void OnDestroy()
+    {
+        if (GlobalEvents.Instance)
+        {
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGainWater, OnGainWater);
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnLoseWater, OnLoseWater);
+        }
     }
 }

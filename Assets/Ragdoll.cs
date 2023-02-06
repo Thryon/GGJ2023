@@ -42,6 +42,10 @@ public class Ragdoll : MonoBehaviour
             {
                 ((MonoBehaviour)component).enabled = enable;
             }
+            else if (component is Rigidbody)
+            {
+                ((Rigidbody)component).isKinematic = enable;
+            }
             else if (component is Collider)
             {
                 ((Collider)component).enabled = enable;
@@ -50,10 +54,7 @@ public class Ragdoll : MonoBehaviour
             {
                 ((Behaviour)component).enabled = enable;
             }
-            else if (component is Rigidbody)
-            {
-                ((Rigidbody)component).isKinematic = enable;
-            }
+            
             
         }
     }

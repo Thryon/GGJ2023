@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -20,6 +21,17 @@ public class UpgradeMenu : MonoBehaviour
         {
             upgradeButton.OnUpgrade -= OnButtonUpgradeClicked;
             upgradeButton.OnUpgrade += OnButtonUpgradeClicked;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GlobalEvents.Instance)
+        {
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OpenUpgradeMenu, Open);
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.CloseUpgradeMenu, Close);
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGainSeed, OnGainSeed);
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnLoseSeed, OnLoseSeed);
         }
     }
 

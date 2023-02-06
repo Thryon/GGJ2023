@@ -64,6 +64,11 @@ namespace KinematicCharacterController
 
         private void OnDestroy()
         {
+            if (GlobalEvents.Instance)
+            {
+                GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnUpgradeMenuOpened, OnUpgradeMenuOpened);
+                GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnUpgradeMenuClosed, OnUpgradeMenuClosed);
+            }
         }
         
 
@@ -102,7 +107,6 @@ namespace KinematicCharacterController
                 float fireRateInterval = 1f/waterRefillRate;
                 while (waterRefillTimer >= fireRateInterval)
                 {
-                    Debug.Log(CurrentWaterSource.currentAmount);
                     if (CurrentWaterSource.currentAmount > 0 && !WaterReservoir.IsFull())
                     {
                         CurrentWaterSource.UseWater(1);

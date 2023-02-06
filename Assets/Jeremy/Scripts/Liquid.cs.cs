@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,6 +53,15 @@ public class Liquid : MonoBehaviour
             GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.OnLoseWater, OnAmountChange);
         }
         OnAmountChange(0);
+    }
+
+    private void OnDestroy()
+    {
+        if (GlobalEvents.Instance)
+        {
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnGainWater, OnAmountChange);
+            GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.OnLoseWater, OnAmountChange);
+        }
     }
 
     private void OnValidate()

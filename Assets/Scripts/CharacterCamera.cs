@@ -81,6 +81,15 @@ namespace KinematicCharacterController
             GlobalEvents.Instance.RegisterEvent(GlobalEventEnum.BigCameraShake, (GlobalEvents.EventFloat)DoBigCameraShake);
         }
 
+        private void OnDestroy()
+        {
+            if (GlobalEvents.Instance)
+            {
+                GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.SmallCameraShake, (GlobalEvents.EventFloat)DoSmallCameraShake);
+                GlobalEvents.Instance.UnregisterEvent(GlobalEventEnum.BigCameraShake, (GlobalEvents.EventFloat)DoBigCameraShake);
+            }
+        }
+
         private void DoSmallCameraShake(float duration)
         {
             shaker.DOShakePosition(duration, 0.005f, 10, 50f);
