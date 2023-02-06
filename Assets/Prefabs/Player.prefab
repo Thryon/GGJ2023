@@ -22770,7 +22770,7 @@ ParticleSystem:
     serializedVersion: 2
     inside: 2
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 2
     radiusScale: 1

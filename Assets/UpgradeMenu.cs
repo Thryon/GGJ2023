@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -28,6 +26,7 @@ public class UpgradeMenu : MonoBehaviour
     private void OnButtonUpgradeClicked(PlayerUpgrader.UpgradeType type)
     {
         ReferencesSingleton.Instance.player.PlayerUpgrader.Upgrade(type);
+        RefreshButtons();
     }
 
     private bool isOpen = false;

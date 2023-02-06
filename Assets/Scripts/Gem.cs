@@ -1,12 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
     Health health;
 
-    private void Start()
+    private IEnumerator Start()
     {
         health = GetComponent<Health>();
+        yield return null;
+        yield return null;
         GlobalEvents.Instance.SendEvent(GlobalEventEnum.OnGemHit, health.MaxHealth);
     }
 

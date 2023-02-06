@@ -12,27 +12,47 @@ public class WaterEmitter : MonoBehaviour
         WaterSystem.Instance.AddEmitter(this);
     }
 
-    private List<ParticleSystem.Particle> particles = new List<ParticleSystem.Particle>(100);
+    private List<ParticleSystem.Particle> insideParticles = new List<ParticleSystem.Particle>(100);
+    private List<ParticleSystem.Particle> enterParticles = new List<ParticleSystem.Particle>(100);
     private void OnParticleTrigger()
     {
-        int particlesCount = ParticleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Inside, particles,
-            out ParticleSystem.ColliderData colliderData);
+        int insideParticlesCount = ParticleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Inside, insideParticles,
+            out ParticleSystem.ColliderData insideColliderData);
 
-        for (int i = 0; i < particlesCount; i++)
+        int enterParticlesCount = ParticleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enterParticles,
+            out ParticleSystem.ColliderData enterColliderData);
+        
+        for (int i = 0; i < insideParticlesCount; i++)
         {
-
-            int colliderCount = colliderData.GetColliderCount(i);
+            int colliderCount = insideColliderData.GetColliderCount(i);
             for (int j = 0; j < colliderCount; j++)
             {
-                Component comp = colliderData.GetCollider(i, j);
-                var particle = particles[i];
+                Component comp = insideColliderData.GetCollider(i, j);
+                var particle = insideParticles[i];
                 particle.remainingLifetime = 0f;
-                particles[i] = particle;
+                insideParticles[i] = particle;
                 Collider col = (Collider)comp;
                 Vector3 colliderPoint = col.ClosestPoint(particle.position);
                 Vector3 dir = (colliderPoint - particle.position).normalized;
-                ParticleSystem.SetTriggerParticles(ParticleSystemTriggerEventType.Inside, particles);
-                GlobalEvents.Instance.DispatchOnParticleCollisionEvent(comp, particles[i], particle.position, dir);
+                ParticleSystem.SetTriggerParticles(ParticleSystemTriggerEventType.Inside, insideParticles);
+                GlobalEvents.Instance.DispatchOnParticleCollisionEvent(comp, insideParticles[i], particle.position, dir);
+            }
+        }
+        
+        for (int i = 0; i < enterParticlesCount; i++)
+        {
+            int colliderCount = enterColliderData.GetColliderCount(i);
+            for (int j = 0; j < colliderCount; j++)
+            {
+                Component comp = enterColliderData.GetCollider(i, j);
+                var particle = enterParticles[i];
+                particle.remainingLifetime = 0f;
+                enterParticles[i] = particle;
+                Collider col = (Collider)comp;
+                Vector3 colliderPoint = col.ClosestPoint(particle.position);
+                Vector3 dir = (colliderPoint - particle.position).normalized;
+                ParticleSystem.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enterParticles);
+                GlobalEvents.Instance.DispatchOnParticleCollisionEvent(comp, enterParticles[i], particle.position, dir);
             }
         }
     }
