@@ -55,7 +55,7 @@ CapsuleCollider:
   m_Radius: 1.05
   m_Height: 2.45
   m_Direction: 1
-  m_Center: {x: 0, y: 0.69, z: 0}
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!114 &3146246789487940340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428531769366981248}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7127b34880361b54fbed5cfb0765694c, type: 3}
   m_Name: 
@@ -276,14 +276,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3428531769366981292}
   - component: {fileID: 3428531769366981350}
-  - component: {fileID: 3428531769366981347}
-  - component: {fileID: 3428531769366981353}
-  - component: {fileID: 3428531769366981349}
+  - component: {fileID: 117263854327756497}
+  - component: {fileID: 4966336224733358930}
   - component: {fileID: 3428531769366981293}
   - component: {fileID: -4541172343348505379}
   - component: {fileID: 7574200356432823854}
-  - component: {fileID: 7066308772778257357}
-  - component: {fileID: 3783802825324267605}
   m_Layer: 8
   m_Name: EnemyTreasure
   m_TagString: Untagged
@@ -298,8 +295,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428531769366981254}
-  m_LocalRotation: {x: 0, y: 0.074239075, z: 0, w: 0.9972405}
-  m_LocalPosition: {x: 133.38062, y: 1.7686749, z: 131.32443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -309,7 +306,7 @@ Transform:
   - {fileID: 3239770435416027044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 8.515, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3428531769366981350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +335,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &3428531769366981347
+--- !u!114 &117263854327756497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -351,36 +348,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 1
-  height: 2
+  radius: 1.25
+  height: 2.5
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 1
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
   centerOffsetCompatibility: NaN
-  repathRateCompatibility: 0.1
-  canSearchCompability: 1
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
   orientation: 0
   enableRotation: 1
   autoRepath:
     mode: 2
-    period: 0.1
+    period: 0.5
     sensitivity: 10
-    maximumPeriod: 0.2
+    maximumPeriod: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
-  rotationSpeed: 450
-  slowdownDistance: 7
-  pickNextWaypointDist: 10
-  endReachedDistance: 1
+  rotationSpeed: 360
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 2
+  endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
---- !u!114 &3428531769366981353
+--- !u!114 &4966336224733358930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,27 +386,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3428531769366981254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8503d71a898994d3288ce1708e2707fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  anim: {fileID: 6419167645491669600}
-  endOfPathEffect: {fileID: 0}
---- !u!114 &3428531769366981349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428531769366981254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f586f285b3847808d79083bd19ef1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  unwrap: 1
-  splitAtEveryPortal: 0
+  version: 2
+  radiusBackingField: 1.25
+  heightBackingField: 2.5
+  centerBackingField: 1.25
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 2
+  obstacleTimeHorizon: 2
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: -1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 0.5
+  debug: 0
 --- !u!114 &3428531769366981293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,15 +450,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentsToDisable:
-  - {fileID: 3428531769366981347}
-  - {fileID: 3428531769366981353}
-  - {fileID: 3428531769366981349}
+  - {fileID: 117263854327756497}
+  - {fileID: 4966336224733358930}
   - {fileID: 3428531769366981293}
-  - {fileID: 0}
   - {fileID: 6419167645491669600}
   - {fileID: 1883629356}
-  - {fileID: 7066308772778257357}
-  - {fileID: 3783802825324267605}
+  - {fileID: 6376510648097961882}
   ragdollColliders:
   - {fileID: 5250972823576288940}
   - {fileID: 8142160630528583865}
@@ -489,56 +480,6 @@ MonoBehaviour:
   - {fileID: 4200416582087998581}
   - {fileID: 3407778299546731163}
   - {fileID: 6881991141491846444}
---- !u!54 &7066308772778257357
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428531769366981254}
-  serializedVersion: 4
-  m_Mass: 20
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
---- !u!136 &3783802825324267605
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428531769366981254}
-  m_Material: {fileID: 13400000, guid: 7ebf950520ae62c4cb7b0f107aafc62a, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.81
-  m_Height: 1.89
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!1 &9069060741114642750
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,7 +92,7 @@ public class AttackTree : MonoBehaviour
 
     private void FindEnemy(ref Collider enemy)
     {
-        Collider[] enemies = Physics.OverlapSphere(transform.position, detectionRadius, detectionLayer, QueryTriggerInteraction.Ignore);
+        Collider[] enemies = Physics.OverlapSphere(transform.position, detectionRadius, detectionLayer, QueryTriggerInteraction.Collide);
         if (enemies.Length > 0)
         {
             for (int i = 0; i < enemies.Length; i++)

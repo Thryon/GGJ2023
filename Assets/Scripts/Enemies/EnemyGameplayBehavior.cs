@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Pathfinding;
+using Pathfinding.RVO;
 using UnityEngine;
 
 public class EnemyGameplayBehavior : MonoBehaviour

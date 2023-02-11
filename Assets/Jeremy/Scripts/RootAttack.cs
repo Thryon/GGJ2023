@@ -52,7 +52,7 @@ public class RootAttack : MonoBehaviour
         root.RemoveTarget();
         if (enemyTarget)
         {
-            enemyTarget.GetComponentInChildren<Health>().TakeDamage(damage);
+            enemyTarget.GetComponent<Health>().TakeDamage(damage);
             //enemyTarget.GetComponent<Ragdoll>().Fling(enemyTarget.transform.position + Vector3.down, Vector3.up, force);
         }
 
