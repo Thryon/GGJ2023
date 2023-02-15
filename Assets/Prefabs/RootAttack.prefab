@@ -85,7 +85,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   damage: 20
-  force: 10
+  force: 20
   RootAvailable: 1
 --- !u!1 &3708682576816160570
 GameObject:

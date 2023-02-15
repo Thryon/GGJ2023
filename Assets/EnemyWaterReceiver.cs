@@ -10,7 +10,7 @@ public class EnemyWaterReceiver : WaterReceiver
         {
             OnWaterReceived?.Invoke();
             var ragdoll = colComponent.GetComponentInParent<Ragdoll>();
-            ragdoll.Fling(position, direction, 5f);
+            ragdoll.Fling(position, (direction + Vector3.up).normalized, 10f);
         }
     }
 }

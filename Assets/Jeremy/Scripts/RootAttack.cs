@@ -53,7 +53,8 @@ public class RootAttack : MonoBehaviour
         if (enemyTarget)
         {
             enemyTarget.GetComponent<Health>().TakeDamage(damage);
-            //enemyTarget.GetComponent<Ragdoll>().Fling(enemyTarget.transform.position + Vector3.down, Vector3.up, force);
+            enemyTarget.GetComponentInParent<Ragdoll>().Fling(enemyTarget.transform.position + Vector3.down, Vector3.up, force);
+            GlobalEvents.Instance.SendEvent(GlobalEventEnum.BigCameraShake, 0.5f);
         }
 
         //GlobalEvents.Instance.SendEvent(GlobalEventEnum.CameraShake);
