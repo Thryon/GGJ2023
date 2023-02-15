@@ -9,6 +9,7 @@ public class PlayerGun : MonoBehaviour
     [SerializeField] private ParticleSystem particles;
     [SerializeField] private WaterReservoir waterReservoir;
     [SerializeField] private float fireRate = 100f;
+    [SerializeField] private LayerMask layerMask;
 
     private bool shooting = false;
     
@@ -56,6 +57,32 @@ public class PlayerGun : MonoBehaviour
                 timer -= Interval;
             }
         }
+    }
+
+    private ParticleSystem.Particle[] particlesArray = new ParticleSystem.Particle[300];
+    private void FixedUpdate()
+    {
+        int particlesAmount = particles.GetParticles(particlesArray);
+        for (int i = 0; i < particlesAmount; i++)
+        {
+            var particle = particlesArray[i];
+            var colliders = Physics.OverlapSphere(particlesArray[i].position, particlesArray[i].GetCurrentSize(particles), layerMask);
+
+            for (int j = 0; j < colliders.Length; j++)
+            {
+                if(!WaterSystem.Instance.IsColliderRegistered(colliders[j]))
+                    continue;
+                
+                if (particle.remainingLifetime == 0f)
+                    break;
+                particlesArray[i].remainingLifetime = 0f;
+                Collider col = colliders[j];
+                Vector3 colliderPoint = col.ClosestPoint(particle.position);
+                Vector3 dir = (colliderPoint - particle.position).normalized;
+                GlobalEvents.Instance.DispatchOnParticleCollisionEvent(col, particle, particle.position, dir);
+            }
+        }
+        particles.SetParticles(particlesArray, particlesAmount);
     }
 
     void StartShootingWater()

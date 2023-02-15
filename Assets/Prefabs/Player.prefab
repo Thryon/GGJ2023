@@ -18939,6 +18939,9 @@ MonoBehaviour:
   particles: {fileID: 6367701458916561527}
   waterReservoir: {fileID: 403585906}
   fireRate: 100
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8055
 --- !u!114 &7568954495872064547
 MonoBehaviour:
   m_ObjectHideFlags: 0
