@@ -184,6 +184,10 @@ public class EnemyGameplayBehavior : MonoBehaviour
                 Attack();
             }
 
+            if (StateMachine.Behavior.aiPath.hasPath)
+            {
+                stateMachine.GoToState(States.Moving);
+            }
         }
 
         // private Coroutine attackRoutine;
