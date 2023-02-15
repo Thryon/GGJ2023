@@ -7,6 +7,11 @@ public class WaterSystem : Singleton<WaterSystem>
     private List<WaterEmitter> waterEmitters = new List<WaterEmitter>();
 
     private List<Collider> registeredColliders = new List<Collider>();
+
+    public bool IsColliderRegistered(Collider collider)
+    {
+        return registeredColliders.Contains(collider);
+    }
     
     public void AddEmitter(WaterEmitter emitter)
     {

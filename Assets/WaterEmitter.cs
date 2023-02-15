@@ -28,13 +28,16 @@ public class WaterEmitter : MonoBehaviour
             for (int j = 0; j < colliderCount; j++)
             {
                 Component comp = insideColliderData.GetCollider(i, j);
+                Collider col = (Collider)comp;
+                if(!WaterSystem.Instance.IsColliderRegistered(col))
+                    continue;
+                
                 var particle = insideParticles[i];
-                // TODO: count only once but only on a collider that uses the water
-                // if(particle.remainingLifetime == 0f)
-                //     continue;
+                if(particle.remainingLifetime == 0f)
+                    continue;
                 particle.remainingLifetime = 0f;
                 insideParticles[i] = particle;
-                Collider col = (Collider)comp;
+                
                 Vector3 colliderPoint = col.ClosestPoint(particle.position);
                 Vector3 dir = (colliderPoint - particle.position).normalized;
                 ParticleSystem.SetTriggerParticles(ParticleSystemTriggerEventType.Inside, insideParticles);
@@ -48,12 +51,16 @@ public class WaterEmitter : MonoBehaviour
             for (int j = 0; j < colliderCount; j++)
             {
                 Component comp = enterColliderData.GetCollider(i, j);
+                Collider col = (Collider)comp;
+                
+                if(!WaterSystem.Instance.IsColliderRegistered(col))
+                    continue;
+                
                 var particle = enterParticles[i];
-                // if(particle.remainingLifetime == 0f)
-                //     continue;
+                if(particle.remainingLifetime == 0f)
+                    continue;
                 particle.remainingLifetime = 0f;
                 enterParticles[i] = particle;
-                Collider col = (Collider)comp;
                 Vector3 colliderPoint = col.ClosestPoint(particle.position);
                 Vector3 dir = (colliderPoint - particle.position).normalized;
                 ParticleSystem.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enterParticles);
