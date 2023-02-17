@@ -164,10 +164,17 @@ public class EnemyGameplayBehavior : MonoBehaviour
             return States.Attacking;
         }
 
-        private float attackTimer = 0f;
+        private bool attackReady = true;
+        private Coroutine attackCooldownCoroutine;
         public override void OnEnterState(States previousState)
         {
-            attackTimer = Behavior.AttackInterval;
+            attackCooldownCoroutine = Behavior.StartCoroutine(AttackCooldown());
+        }
+
+        IEnumerator AttackCooldown()
+        {
+            yield return new WaitForSeconds(Behavior.AttackInterval);
+            attackReady = true;
         }
 
         public override void OnStateUpdate(float deltaTime)
@@ -177,11 +184,15 @@ public class EnemyGameplayBehavior : MonoBehaviour
                 stateMachine.GoToState(States.Dead);
             }
 
-            attackTimer += deltaTime;
-            while (attackTimer > Behavior.AttackInterval)
+            if(attackReady)
             {
-                attackTimer -= Behavior.AttackInterval;
                 Attack();
+                if (attackCooldownCoroutine != null)
+                {
+                    Behavior.StopCoroutine(attackCooldownCoroutine);
+                }
+                attackCooldownCoroutine = Behavior.StartCoroutine(AttackCooldown());
+                attackReady = false;
             }
 
             if (StateMachine.Behavior.aiPath.hasPath)
